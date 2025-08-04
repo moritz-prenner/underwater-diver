@@ -12,3 +12,4 @@ func _process(delta: float) -> void:
 
 func gameOver():
 	visible = true
+	get_tree().paused = true

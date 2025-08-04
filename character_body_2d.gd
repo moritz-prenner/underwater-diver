@@ -4,8 +4,11 @@ const SPEED = 150.0
 const SPEED_UP = 200.0
 const SPEED_DOWN = 150.0
 const DASH_SPEED = 1000.0
-const DASH_TIME = 0.2  # Sekunden
+const DASH_TIME = 0.2  # Dauer des Dashs in Sekunden
+const DASH_COOLDOWN = 4.0  # Cooldown-Zeit in Sekunden
+
 var dash_timer = 0.0
+var dash_cooldown_timer = 0.0  # Neue Variable für Cooldown
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var col_default: CollisionShape2D = $CollisionShape2D_default
@@ -15,17 +18,22 @@ func _physics_process(delta: float) -> void:
 	var input_x = Input.get_axis("left", "right")
 	var input_y = Input.get_axis("up", "down")
 
-	# Dash starten (nur, wenn nicht schon am Dashen)
-	if Input.is_action_just_pressed("dash") and dash_timer <= 0.0 and (input_x != 0 or input_y != 0):
+	# Cooldown-Zähler runterzählen
+	if dash_cooldown_timer > 0.0:
+		dash_cooldown_timer -= delta
+
+	# Dash starten (nur, wenn nicht bereits am Dashen und Cooldown vorbei)
+	if Input.is_action_just_pressed("dash") and dash_timer <= 0.0 and dash_cooldown_timer <= 0.0 and (input_x != 0 or input_y != 0):
 		dash_timer = DASH_TIME
+		dash_cooldown_timer = DASH_COOLDOWN  # Cooldown setzen
 		velocity = Vector2(input_x, input_y).normalized() * DASH_SPEED
 
 	# Dash läuft
 	if dash_timer > 0.0:
 		dash_timer -= delta
-		# Während Dash bleibt velocity konstant, keine Änderung
+		# Während Dash bleibt velocity konstant
 	else:
-		# Normalbewegung, Geschwindigkeit komplett setzen
+		# Normale Bewegung
 		var target_velocity_x = input_x * SPEED
 
 		var target_velocity_y = 0.0
@@ -34,7 +42,6 @@ func _physics_process(delta: float) -> void:
 		elif input_y > 0:
 			target_velocity_y = input_y * SPEED_DOWN
 
-		# Sanfte vertikale Bewegung
 		velocity.x = target_velocity_x
 		velocity.y = lerp(velocity.y, target_velocity_y, 0.1)
 
@@ -46,16 +53,14 @@ func _physics_process(delta: float) -> void:
 		anim.play("swim")
 		if input_x != 0:
 			anim.flip_h = input_x < 0
-		# CollisionShape für swim aktiv, andere deaktiviert
 		col_swim.disabled = false
 		col_default.disabled = true
 	else:
 		anim.play("default")
-		# CollisionShape für default aktiv, andere deaktiviert
 		col_swim.disabled = true
 		col_default.disabled = false
 
-	# Rotation nach oben/unten, gespiegelt bei Blickrichtung
+	# Rotation anpassen
 	var target_rotation = 0.0
 	if input_y > 0:
 		target_rotation = deg_to_rad(20)
