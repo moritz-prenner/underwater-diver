@@ -8,6 +8,8 @@ const DASH_TIME = 0.2  # Sekunden
 var dash_timer = 0.0
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
+@onready var col_default: CollisionShape2D = $CollisionShape2D_default
+@onready var col_swim: CollisionShape2D = $CollisionShape2D_swim
 
 func _physics_process(delta: float) -> void:
 	var input_x = Input.get_axis("left", "right")
@@ -39,13 +41,19 @@ func _physics_process(delta: float) -> void:
 	# Bewegung ausführen
 	move_and_slide()
 
-	# Animation & Blickrichtung
+	# Animation, Blickrichtung & CollisionShape wechseln
 	if velocity.length() > 0.1:
 		anim.play("swim")
 		if input_x != 0:
 			anim.flip_h = input_x < 0
+		# CollisionShape für swim aktiv, andere deaktiviert
+		col_swim.disabled = false
+		col_default.disabled = true
 	else:
 		anim.play("default")
+		# CollisionShape für default aktiv, andere deaktiviert
+		col_swim.disabled = true
+		col_default.disabled = false
 
 	# Rotation nach oben/unten, gespiegelt bei Blickrichtung
 	var target_rotation = 0.0
