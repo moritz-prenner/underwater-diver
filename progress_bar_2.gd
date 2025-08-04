@@ -5,11 +5,13 @@ var hp = 100
 @onready var game_over: Panel = $"../GameOver"
 @onready var player: CharacterBody2D = $"../../CharacterBody2D"
 @onready var camera: Camera2D = $"../../CharacterBody2D/Camera2D"
+@onready var hit: Panel = $"../hit"
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	value = hp
+	hit.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -24,4 +26,7 @@ func damage(newValue):
 	camera.shake()
 	player.play_hurt()
 	value = hp
+	hit.visible = true
+	await get_tree().create_timer(1.0).timeout
+	hit.visible = false
 	

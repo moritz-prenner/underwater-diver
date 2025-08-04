@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=4 uid="uid://c5sdjc2i6rng5"]
+[gd_scene load_steps=58 format=4 uid="uid://c5sdjc2i6rng5"]
 
 [ext_resource type="Texture2D" uid="uid://bx1oiqfsx33on" path="res://assets/background.png" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://cymf5p6qyb7i3" path="res://character_body_2d.gd" id="1_272bh"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://b3l4lys8y572r" path="res://game_over.gd" id="12_dg77c"]
 [ext_resource type="PackedScene" uid="uid://tbonrp7isq1v" path="res://enemy.tscn" id="13_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://c2a3agxmjc1nm" path="res://oxygen.tscn" id="14_w48qg"]
+[ext_resource type="PackedScene" uid="uid://e5rr3jxwua74" path="res://punch.tscn" id="19_cegan"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dg77c"]
 atlas = ExtResource("2_5vw27")
@@ -501,7 +502,7 @@ texture = ExtResource("1_0xm2m")
 [sub_resource type="TileSet" id="TileSet_lquwl"]
 sources/0 = SubResource("TileSetAtlasSource_1bvp3")
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4c57u"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_074og"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_efxa6"]
 texture = ExtResource("8_kek77")
@@ -1354,7 +1355,7 @@ texture = ExtResource("9_vivmo")
 
 [sub_resource type="TileSet" id="TileSet_dg77c"]
 physics_layer_0/collision_layer = 1
-physics_layer_0/physics_material = SubResource("PhysicsMaterial_4c57u")
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_074og")
 sources/0 = SubResource("TileSetAtlasSource_efxa6")
 sources/1 = SubResource("TileSetAtlasSource_2cqfq")
 
@@ -1386,6 +1387,9 @@ corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_074og"]
+bg_color = Color(0.898039, 0, 0, 0.176471)
 
 [sub_resource type="Curve2D" id="Curve2D_2cqfq"]
 _data = {
@@ -1537,6 +1541,12 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_dg77c")
 text = "RETRY"
 metadata/_edit_use_anchors_ = true
 
+[node name="hit" type="Panel" parent="UI"]
+visible = false
+offset_right = 1193.0
+offset_bottom = 665.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_074og")
+
 [node name="Path2D" parent="." instance=ExtResource("13_ycdy4")]
 position = Vector2(34, -175)
 scale = Vector2(2.02, 2.02)
@@ -1665,3 +1675,25 @@ scale = Vector2(0.185, 0.185)
 [node name="oxygen6" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
 position = Vector2(117, 693)
 scale = Vector2(0.185, 0.185)
+
+[node name="Area2D" parent="." instance=ExtResource("19_cegan")]
+position = Vector2(615, 494)
+rotation = -1.5708
+scale = Vector2(2.57, 2.57)
+
+[node name="Area2D2" parent="." instance=ExtResource("19_cegan")]
+position = Vector2(873, 181)
+rotation = 1.5708
+scale = Vector2(2.57, 2.57)
+
+[node name="Area2D3" parent="." instance=ExtResource("19_cegan")]
+position = Vector2(1096, 871)
+rotation = 1.5708
+scale = Vector2(2.57, 2.57)
+
+[node name="Area2D4" parent="." instance=ExtResource("19_cegan")]
+position = Vector2(1222, 742)
+rotation = -1.5708
+scale = Vector2(2.57, 2.57)
+
+[connection signal="pressed" from="UI/GameOver/Button" to="UI/GameOver" method="_on_button_pressed"]

@@ -1,0 +1,142 @@
+[gd_scene load_steps=21 format=3 uid="uid://e5rr3jxwua74"]
+
+[ext_resource type="Script" uid="uid://bq6hxmd5tyqf0" path="res://area_2d.gd" id="1_qquw1"]
+[ext_resource type="Texture2D" uid="uid://cpfof1x36ppte" path="res://assets/Punch Trap - Level 3.png" id="2_wqflr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fli6v"]
+atlas = ExtResource("2_wqflr")
+region = Rect2(0, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxql8"]
+atlas = ExtResource("2_wqflr")
+region = Rect2(96, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vlvof"]
+atlas = ExtResource("2_wqflr")
+region = Rect2(192, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xgx8"]
+atlas = ExtResource("2_wqflr")
+region = Rect2(288, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lusqk"]
+atlas = ExtResource("2_wqflr")
+region = Rect2(384, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5up7w"]
+atlas = ExtResource("2_wqflr")
+region = Rect2(480, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ndrw"]
+atlas = ExtResource("2_wqflr")
+region = Rect2(576, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3a3hg"]
+atlas = ExtResource("2_wqflr")
+region = Rect2(1440, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_alyf7"]
+atlas = ExtResource("2_wqflr")
+region = Rect2(1344, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81plv"]
+atlas = ExtResource("2_wqflr")
+region = Rect2(1248, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvci3"]
+atlas = ExtResource("2_wqflr")
+region = Rect2(1152, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wsdk"]
+atlas = ExtResource("2_wqflr")
+region = Rect2(1056, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uebqf"]
+atlas = ExtResource("2_wqflr")
+region = Rect2(960, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyyna"]
+atlas = ExtResource("2_wqflr")
+region = Rect2(864, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y5beb"]
+atlas = ExtResource("2_wqflr")
+region = Rect2(768, 0, 96, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5wwv"]
+atlas = ExtResource("2_wqflr")
+region = Rect2(672, 0, 96, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d5q3r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fli6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxql8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vlvof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xgx8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lusqk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5up7w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ndrw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3a3hg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_alyf7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81plv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvci3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0wsdk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uebqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eyyna")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y5beb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o5wwv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3jil2"]
+size = Vector2(22, 31)
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_qquw1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_d5q3r")
+frame = 14
+frame_progress = 0.310072
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0.5)
+shape = SubResource("RectangleShape2D_3jil2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

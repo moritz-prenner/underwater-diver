@@ -13,3 +13,9 @@ func _process(delta: float) -> void:
 func gameOver():
 	visible = true
 	get_tree().paused = true
+
+
+func _on_button_pressed() -> void:
+	visible = false
+	get_tree().reload_current_scene()
+	
