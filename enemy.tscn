@@ -126,14 +126,14 @@ script = ExtResource("1_4gyqm")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
 position = Vector2(62, 192)
-rotation = -0.00263515
+rotation = -0.00263621
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
 remote_path = NodePath("../../Area2D")
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(62, 192)
-rotation = -0.00263515
+rotation = -0.00263621
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
 texture_filter = 1
@@ -147,3 +147,5 @@ shape = SubResource("CircleShape2D_hb8ge")
 libraries = {
 &"": SubResource("AnimationLibrary_pwjut")
 }
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
