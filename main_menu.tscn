@@ -459,7 +459,10 @@ anchor_left = 0.0880627
 anchor_top = 0.397683
 anchor_right = 0.836804
 anchor_bottom = 0.435754
+max_value = 1.0
+step = 0.001
 script = ExtResource("3_glbon")
+bus_name = "music"
 metadata/_edit_use_anchors_ = true
 
 [node name="Label3" type="Label" parent="CanvasLayer/Panel/Panel2"]
@@ -575,5 +578,6 @@ texture = ExtResource("2_fu7sn")
 [connection signal="pressed" from="CanvasLayer/Panel/Panel/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Panel/Panel/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="CanvasLayer/Panel/Panel/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="value_changed" from="CanvasLayer/Panel/Panel2/HSlider" to="CanvasLayer/Panel/Panel2/HSlider" method="_on_value_changed"]
 [connection signal="pressed" from="CanvasLayer/Panel/Panel2/Button4" to="." method="_on_button_4_pressed"]
 [connection signal="pressed" from="CanvasLayer/Panel/Panel3/Button5" to="." method="_on_button_5_pressed"]
