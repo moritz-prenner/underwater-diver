@@ -33,7 +33,7 @@ func gameOver():
 
 func _on_button_pressed() -> void:
 	print(checkpoint)
-	oxygen.shakePossible = true
+	oxygen.shakePossible = false
 	possibleTrigger = false
 	get_tree().paused = false
 	visible = false
@@ -48,5 +48,4 @@ func _on_button_pressed() -> void:
 	oxygen.oxygen = 100
 	await get_tree().create_timer(1.0).timeout
 	possibleTrigger = true
-	print("reactivate")
 	bubbles.reactivate()

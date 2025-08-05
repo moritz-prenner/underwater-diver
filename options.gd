@@ -13,3 +13,4 @@ func _process(delta: float) -> void:
 
 func _on_button_4_pressed() -> void:
 	visible = false
+	get_tree().paused = false

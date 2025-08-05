@@ -2,7 +2,7 @@ extends Area2D
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hearts: ProgressBar = $"../UI/ProgressBar2"
-@onready var player: CharacterBody2D = $CharacterBody2D
+
 
 # Erlaube Schaden nur bei diesen Animationsframes
 var damage_frames = [11, 12, 13, 14, 15] 

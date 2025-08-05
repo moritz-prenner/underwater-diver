@@ -11,12 +11,14 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("escape"):
 		visible = true
+		get_tree().paused = true
 		
 	
 
 
 func _on_button_pressed() -> void:
 	visible = false
+	get_tree().paused = false
 
 
 func _on_button_2_pressed() -> void:
