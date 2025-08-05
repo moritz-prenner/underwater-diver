@@ -9,5 +9,8 @@ func _ready() -> void:
 	value = AudioServer.get_bus_volume_db(bus_index)
 
 func _on_value_changed(value: float) -> void:
-	print("Setze dB direkt:", value)
-	AudioServer.set_bus_volume_db(bus_index, value)
+	if value == 0:
+		AudioServer.set_bus_volume_db(bus_index, -80)  # Stumm
+	else:
+		var db = 20 * (log(value) / log(10))
+		AudioServer.set_bus_volume_db(bus_index, db)
