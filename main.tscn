@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=4 uid="uid://c5sdjc2i6rng5"]
+[gd_scene load_steps=64 format=4 uid="uid://c5sdjc2i6rng5"]
 
 [ext_resource type="Texture2D" uid="uid://bx1oiqfsx33on" path="res://assets/background.png" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://cymf5p6qyb7i3" path="res://character_body_2d.gd" id="1_272bh"]
@@ -14,12 +14,16 @@
 [ext_resource type="FontFile" uid="uid://c1mx2i5krwaqj" path="res://assets/Jersey15-Regular.ttf" id="10_4c57u"]
 [ext_resource type="Script" uid="uid://dtcd1xekb3jl2" path="res://oxygen.gd" id="10_efxa6"]
 [ext_resource type="Script" uid="uid://b58tm00o5i658" path="res://progress_bar_2.gd" id="12_2cqfq"]
-[ext_resource type="Texture2D" uid="uid://cnnvsi7kt5x0s" path="res://assets/midground - Kopie.png" id="12_cegan"]
 [ext_resource type="Script" uid="uid://b3l4lys8y572r" path="res://game_over.gd" id="12_dg77c"]
+[ext_resource type="Texture2D" uid="uid://dgfx3lvhkd46n" path="res://assets/midground - Kopie (2).png" id="12_getpj"]
 [ext_resource type="PackedScene" uid="uid://tbonrp7isq1v" path="res://enemy.tscn" id="13_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://c2a3agxmjc1nm" path="res://oxygen.tscn" id="14_w48qg"]
+[ext_resource type="Script" uid="uid://3asn2immjxe7" path="res://level_cleared.gd" id="17_d13ii"]
+[ext_resource type="Texture2D" uid="uid://bx4epeval77mb" path="res://assets/star1.png" id="18_1u8w0"]
 [ext_resource type="PackedScene" uid="uid://e5rr3jxwua74" path="res://punch.tscn" id="19_cegan"]
 [ext_resource type="PackedScene" uid="uid://npovc3wa1ja2" path="res://lightning.tscn" id="20_82xsv"]
+[ext_resource type="PackedScene" uid="uid://p6it7nw00761" path="res://stars.tscn" id="21_ryguw"]
+[ext_resource type="PackedScene" uid="uid://b6mk3agrxlf1q" path="res://trophy.tscn" id="23_1u8w0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dg77c"]
 atlas = ExtResource("2_5vw27")
@@ -209,7 +213,7 @@ animations = [{
 radius = 12.0
 height = 54.0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1bvp3"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d13ii"]
 texture = ExtResource("1_0xm2m")
 0:0/0 = 0
 1:0/0 = 0
@@ -501,7 +505,7 @@ texture = ExtResource("1_0xm2m")
 17:15/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_lquwl"]
-sources/0 = SubResource("TileSetAtlasSource_1bvp3")
+sources/0 = SubResource("TileSetAtlasSource_d13ii")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_074og"]
 
@@ -1414,7 +1418,7 @@ point_count = 2
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 z_index = 1
-position = Vector2(1583, 859)
+position = Vector2(-48, -5)
 script = ExtResource("1_272bh")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
@@ -1455,16 +1459,16 @@ tile_set = SubResource("TileSet_dg77c")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -5
 texture_filter = 1
-position = Vector2(1149.19, 511.573)
+position = Vector2(950.197, 514.427)
 scale = Vector2(2.39336, 1.98995)
 texture = ExtResource("2_h2yge")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 z_index = -5
 texture_filter = 1
-position = Vector2(3441, 509)
+position = Vector2(2825.01, 515.854)
 scale = Vector2(2.39336, 1.98995)
-texture = ExtResource("12_cegan")
+texture = ExtResource("12_getpj")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -1535,6 +1539,7 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Button" type="Button" parent="UI/GameOver"]
+process_mode = 3
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.272414
@@ -1549,6 +1554,56 @@ theme_override_font_sizes/font_size = 80
 theme_override_styles/normal = SubResource("StyleBoxFlat_dg77c")
 text = "RETRY"
 metadata/_edit_use_anchors_ = true
+
+[node name="LevelCleared" type="Panel" parent="UI"]
+anchors_preset = -1
+anchor_right = 1.00694
+anchor_bottom = 1.00617
+offset_bottom = -6.10352e-05
+script = ExtResource("17_d13ii")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="UI/LevelCleared"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.161208
+anchor_top = 0.0659511
+anchor_right = 0.8319
+anchor_bottom = 0.297547
+offset_right = 6.10352e-05
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("10_4c57u")
+theme_override_font_sizes/font_size = 150
+text = "LEVEL CLEARED"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="UI/LevelCleared"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.26638
+anchor_top = 0.631904
+anchor_right = 0.721552
+anchor_bottom = 0.823622
+offset_bottom = 3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("10_4c57u")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_dg77c")
+text = "RESUME"
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="UI/LevelCleared"]
+layout_mode = 0
+offset_left = 306.0
+offset_top = 189.0
+offset_right = 831.0
+offset_bottom = 398.0
+texture = ExtResource("18_1u8w0")
+expand_mode = 1
 
 [node name="hit" type="Panel" parent="UI"]
 visible = false
@@ -1715,10 +1770,6 @@ scale = Vector2(0.185, 0.185)
 position = Vector2(1943, 882)
 scale = Vector2(0.185, 0.185)
 
-[node name="oxygen21" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
-position = Vector2(885, 439)
-scale = Vector2(0.185, 0.185)
-
 [node name="oxygen22" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
 position = Vector2(1451, 56)
 scale = Vector2(0.185, 0.185)
@@ -1854,4 +1905,24 @@ rotation = 1.5708
 position = Vector2(1648, 215)
 rotation = 1.5708
 
+[node name="stars" parent="." instance=ExtResource("21_ryguw")]
+position = Vector2(270, 476)
+scale = Vector2(0.175, 0.175)
+
+[node name="stars2" parent="." instance=ExtResource("21_ryguw")]
+position = Vector2(74, 962)
+scale = Vector2(0.175, 0.175)
+
+[node name="stars3" parent="." instance=ExtResource("21_ryguw")]
+position = Vector2(886, 432)
+scale = Vector2(0.175, 0.175)
+
+[node name="checkpoint1" type="Node2D" parent="."]
+position = Vector2(1156, 440)
+
+[node name="trophy" parent="." instance=ExtResource("23_1u8w0")]
+position = Vector2(1156, 442)
+scale = Vector2(1.175, 1.175)
+
 [connection signal="pressed" from="UI/GameOver/Button" to="UI/GameOver" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/LevelCleared/Button" to="UI/LevelCleared" method="_on_button_pressed"]

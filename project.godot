@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="underwater-diver"
-run/main_scene="uid://c5sdjc2i6rng5"
+run/main_scene="uid://c6j6lgfgm5lbf"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 

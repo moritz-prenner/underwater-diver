@@ -1,15 +1,14 @@
 extends Area2D
 
-@onready var player: CharacterBody2D = $CharacterBody2D
+@onready var anim: AnimatedSprite2D = $AnimatedSprite2D
+@onready var stars: Area2D = $"../stars"
+@onready var level_cleared: Panel = $"../UI/LevelCleared"
 
-var starCounter = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	visible = true
+	anim.play("default")
 
-func starCounterZero():
-	starCounter = 0
-	
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
@@ -17,6 +16,6 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "CharacterBody2D":
-		visible = false
-		starCounter += 1
+		level_cleared.clear()
+		stars.starCounterZero()
 		

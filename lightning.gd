@@ -16,7 +16,5 @@ func _process(delta: float) -> void:
 	hitPossible = anim.frame in damage_frames
 
 func _on_body_entered(body: Node2D) -> void:
-	print("entered")
 	if body.name == "CharacterBody2D" and hitPossible:
-		print("detected")
 		hearts.damage(20)
