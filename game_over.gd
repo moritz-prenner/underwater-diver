@@ -2,6 +2,9 @@ extends Panel
 
 var checkpoint = 0
 
+var possibleTrigger = true
+
+@onready var bubbles: Area2D = $"../../oxygenCluster/oxygen"
 
 @onready var player: CharacterBody2D = $"../../CharacterBody2D"
 @onready var checkpoint1: Node2D = $"../../checkpoint1"
@@ -20,11 +23,16 @@ func _process(delta: float) -> void:
 	pass
 
 func gameOver():
-	visible = true
-	get_tree().paused = true
+	oxygen.shakePossible = false
+	if possibleTrigger == true:
+		visible = true
+		get_tree().paused = true
 
 
 func _on_button_pressed() -> void:
+	print(checkpoint)
+	oxygen.shakePossible = true
+	possibleTrigger = false
 	get_tree().paused = false
 	visible = false
 	hp.value = 100
@@ -34,3 +42,9 @@ func _on_button_pressed() -> void:
 			player.position = checkpoint0.position
 		1:
 			player.position = checkpoint1.position
+	hp.hp = 100
+	oxygen.oxygen = 100
+	await get_tree().create_timer(1.0).timeout
+	possibleTrigger = true
+	print("reactivate")
+	bubbles.reactivate()

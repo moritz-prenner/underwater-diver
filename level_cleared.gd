@@ -7,13 +7,17 @@ extends Panel
 @onready var star1 = preload("res://assets/star1.png")
 @onready var star2 = preload("res://assets/star2.png")
 @onready var star3 = preload("res://assets/star3.png")
+
+var countTheStars = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	visible = false
 
 func clear():
 	visible = true
-	match stars.starCounter:
+	countTheStars = stars.starCounter
+	print(countTheStars)
+	match countTheStars:
 		0:
 			display.texture = star0
 		1:

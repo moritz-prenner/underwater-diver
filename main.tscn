@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=4 uid="uid://c5sdjc2i6rng5"]
+[gd_scene load_steps=72 format=4 uid="uid://c5sdjc2i6rng5"]
 
 [ext_resource type="Texture2D" uid="uid://bx1oiqfsx33on" path="res://assets/background.png" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://cymf5p6qyb7i3" path="res://character_body_2d.gd" id="1_272bh"]
@@ -26,6 +26,7 @@
 [ext_resource type="Script" uid="uid://d1peq5lnwfkex" path="res://credits.gd" id="20_lswn8"]
 [ext_resource type="PackedScene" uid="uid://p6it7nw00761" path="res://stars.tscn" id="21_ryguw"]
 [ext_resource type="PackedScene" uid="uid://b6mk3agrxlf1q" path="res://trophy.tscn" id="23_1u8w0"]
+[ext_resource type="AudioStream" uid="uid://bcpnbdwl24vqg" path="res://assets/361636__jofae__8-bit-slam.mp3" id="27_a6jrf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dg77c"]
 atlas = ExtResource("2_5vw27")
@@ -2104,6 +2105,10 @@ position = Vector2(-49, -5)
 [node name="trophy" parent="." instance=ExtResource("23_1u8w0")]
 position = Vector2(1156, 442)
 scale = Vector2(1.175, 1.175)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("27_a6jrf")
+bus = &"SFX"
 
 [connection signal="pressed" from="UI/GameOver/Button" to="UI/GameOver" method="_on_button_pressed"]
 [connection signal="pressed" from="UI/LevelCleared/Button" to="UI/LevelCleared" method="_on_button_pressed"]

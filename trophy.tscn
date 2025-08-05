@@ -295,5 +295,6 @@ shape = SubResource("RectangleShape2D_m7lst")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xwylc")
+animation = &"flag"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

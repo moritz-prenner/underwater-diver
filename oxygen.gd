@@ -5,6 +5,8 @@ const oxygenConsumption = 0.075
 
 var shaking = false
 
+var shakePossible = true
+
 @onready var game_over: Panel = $"../GameOver"
 @onready var camera: Camera2D = $"../../CharacterBody2D/Camera2D"
 @onready var hit: Panel = $"../hit"

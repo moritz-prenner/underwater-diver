@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=4 uid="uid://c6j6lgfgm5lbf"]
+[gd_scene load_steps=12 format=4 uid="uid://c6j6lgfgm5lbf"]
 
 [ext_resource type="Texture2D" uid="uid://bx1oiqfsx33on" path="res://assets/background.png" id="1_7vrkn"]
 [ext_resource type="Script" uid="uid://bm4ff0jxaauqj" path="res://main_menu.gd" id="1_fu7sn"]
 [ext_resource type="Texture2D" uid="uid://bfq3thjjjxcu8" path="res://assets/midground.png" id="2_fu7sn"]
 [ext_resource type="FontFile" uid="uid://c1mx2i5krwaqj" path="res://assets/Jersey15-Regular.ttf" id="2_jix8l"]
+[ext_resource type="Script" uid="uid://ddgtkg1df2sug" path="res://music-volume.gd" id="3_glbon"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jix8l"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -458,6 +459,7 @@ anchor_left = 0.0880627
 anchor_top = 0.397683
 anchor_right = 0.836804
 anchor_bottom = 0.435754
+script = ExtResource("3_glbon")
 metadata/_edit_use_anchors_ = true
 
 [node name="Label3" type="Label" parent="CanvasLayer/Panel/Panel2"]
@@ -470,7 +472,7 @@ anchor_bottom = 0.59042
 offset_bottom = 1.52588e-05
 theme_override_fonts/font = ExtResource("2_jix8l")
 theme_override_font_sizes/font_size = 40
-text = "MUSIC VOLUME"
+text = "SFX VOLUME"
 metadata/_edit_use_anchors_ = true
 
 [node name="HSlider2" type="HSlider" parent="CanvasLayer/Panel/Panel2"]

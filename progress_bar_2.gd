@@ -6,6 +6,7 @@ var hp = 100
 @onready var player: CharacterBody2D = $"../../CharacterBody2D"
 @onready var camera: Camera2D = $"../../CharacterBody2D/Camera2D"
 @onready var hit: Panel = $"../hit"
+@onready var hitSound: AudioStreamPlayer = $"../../AudioStreamPlayer"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -22,6 +23,7 @@ func _process(delta: float) -> void:
 		game_over.gameOver()
 
 func damage(newValue):
+	hitSound.play()
 	hp -= newValue
 	camera.shake()
 	player.play_hurt()
