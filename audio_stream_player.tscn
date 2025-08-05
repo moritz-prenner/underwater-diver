@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cafa2c7gsbtfo"]
+
+[ext_resource type="AudioStream" uid="uid://bfb1lqvyxty7f" path="res://assets/Sketchbook 2024-10-26.ogg" id="1_g84o6"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+process_mode = 3
+stream = ExtResource("1_g84o6")
+autoplay = true

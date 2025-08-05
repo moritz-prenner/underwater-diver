@@ -524,7 +524,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Button4" type="Button" parent="CanvasLayer/Panel/Panel3"]
+[node name="Button5" type="Button" parent="CanvasLayer/Panel/Panel3"]
 texture_filter = 1
 layout_mode = 0
 anchor_left = 0.0932455
@@ -536,6 +536,24 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/hover = SubResource("StyleBoxFlat_qe12f")
 theme_override_styles/normal = SubResource("StyleBoxFlat_nlkkf")
 text = "EXIT"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="CanvasLayer/Panel/Panel3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.150245
+anchor_top = 0.221603
+anchor_right = 0.860126
+anchor_bottom = 0.683221
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_jix8l")
+theme_override_font_sizes/font_size = 20
+text = "Pixel Adventure 1 -- Itch.io
+8 bit slam -- jofae (freesound.org)"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -554,5 +572,6 @@ texture = ExtResource("2_fu7sn")
 
 [connection signal="pressed" from="CanvasLayer/Panel/Panel/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Panel/Panel/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/Panel/Button3" to="." method="_on_button_3_pressed"]
 [connection signal="pressed" from="CanvasLayer/Panel/Panel2/Button4" to="." method="_on_button_4_pressed"]
-[connection signal="pressed" from="CanvasLayer/Panel/Panel3/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/Panel3/Button5" to="." method="_on_button_5_pressed"]

@@ -1463,7 +1463,7 @@ point_count = 2
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 z_index = 1
-position = Vector2(-63, 4)
+position = Vector2(-48, -5)
 script = ExtResource("1_272bh")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
@@ -2096,10 +2096,10 @@ position = Vector2(886, 432)
 scale = Vector2(0.175, 0.175)
 
 [node name="checkpoint1" type="Node2D" parent="."]
-position = Vector2(1045, 352)
+position = Vector2(1156, 440)
 
 [node name="checkpoint0" type="Node2D" parent="."]
-position = Vector2(-49, -5)
+position = Vector2(101, 79)
 
 [node name="trophy" parent="." instance=ExtResource("23_1u8w0")]
 position = Vector2(1156, 442)
