@@ -5,7 +5,7 @@ var checkpoint = 0
 var possibleTrigger = true
 
 @onready var bubbles: Area2D = $"../../oxygenCluster/oxygen"
-
+@onready var hit: Panel = $"../hit"
 @onready var player: CharacterBody2D = $"../../CharacterBody2D"
 @onready var checkpoint1: Node2D = $"../../checkpoint1"
 @onready var button: Button = $Button
@@ -27,6 +27,8 @@ func gameOver():
 	if possibleTrigger == true:
 		visible = true
 		get_tree().paused = true
+		oxygen.hitVisibleAllowed = false
+		hit.visible = false
 
 
 func _on_button_pressed() -> void:

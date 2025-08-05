@@ -7,6 +7,8 @@ var shaking = false
 
 var shakePossible = true
 
+var hitVisibleAllowed = true
+
 @onready var game_over: Panel = $"../GameOver"
 @onready var camera: Camera2D = $"../../CharacterBody2D/Camera2D"
 @onready var hit: Panel = $"../hit"
@@ -32,10 +34,11 @@ func newOxygen(newValue):
 	
 func lowOxygen():
 	while oxygen < 20 and oxygen > 0:
-		shaking = true
-		camera.shake()
-		hit.visible = true
-		await get_tree().create_timer(1.0).timeout
-		hit.visible = false
-		await get_tree().create_timer(0.5).timeout
+		if hitVisibleAllowed == true:
+			shaking = true
+			camera.shake()
+			hit.visible = true
+			await get_tree().create_timer(1.0).timeout
+			hit.visible = false
+			await get_tree().create_timer(0.5).timeout
 	shaking = false

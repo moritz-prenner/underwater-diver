@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=4 uid="uid://c6j6lgfgm5lbf"]
+[gd_scene load_steps=13 format=4 uid="uid://c6j6lgfgm5lbf"]
 
 [ext_resource type="Texture2D" uid="uid://bx1oiqfsx33on" path="res://assets/background.png" id="1_7vrkn"]
 [ext_resource type="Script" uid="uid://bm4ff0jxaauqj" path="res://main_menu.gd" id="1_fu7sn"]
 [ext_resource type="Texture2D" uid="uid://bfq3thjjjxcu8" path="res://assets/midground.png" id="2_fu7sn"]
 [ext_resource type="FontFile" uid="uid://c1mx2i5krwaqj" path="res://assets/Jersey15-Regular.ttf" id="2_jix8l"]
 [ext_resource type="Script" uid="uid://ddgtkg1df2sug" path="res://music-volume.gd" id="3_glbon"]
+[ext_resource type="StyleBox" uid="uid://bcrq3dvppntqs" path="res://main_menu.tres" id="3_qe12f"]
+[ext_resource type="Script" uid="uid://guhj4whm5lg5" path="res://sfx-volume.gd" id="4_nlkkf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jix8l"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -24,15 +26,6 @@ corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 shadow_color = Color(0.412152, 0.412152, 0.412152, 0.6)
 shadow_size = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nlkkf"]
-bg_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 15
-corner_radius_top_right = 15
-corner_radius_bottom_right = 15
-corner_radius_bottom_left = 15
-shadow_color = Color(0.389287, 0.389287, 0.389287, 0.6)
-shadow_size = 20
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jix8l"]
 texture = ExtResource("1_7vrkn")
@@ -378,8 +371,11 @@ anchor_right = 0.893803
 anchor_bottom = 0.390545
 theme_override_fonts/font = ExtResource("2_jix8l")
 theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = ExtResource("3_qe12f")
+theme_override_styles/disabled_mirrored = ExtResource("3_qe12f")
 theme_override_styles/hover = SubResource("StyleBoxFlat_qe12f")
-theme_override_styles/normal = SubResource("StyleBoxFlat_nlkkf")
+theme_override_styles/pressed_mirrored = ExtResource("3_qe12f")
+theme_override_styles/normal = ExtResource("3_qe12f")
 text = "PLAY"
 metadata/_edit_use_anchors_ = true
 
@@ -392,8 +388,17 @@ anchor_right = 0.893803
 anchor_bottom = 0.638009
 theme_override_fonts/font = ExtResource("2_jix8l")
 theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = ExtResource("3_qe12f")
+theme_override_styles/disabled_mirrored = ExtResource("3_qe12f")
+theme_override_styles/disabled = ExtResource("3_qe12f")
+theme_override_styles/hover_pressed_mirrored = ExtResource("3_qe12f")
+theme_override_styles/hover_pressed = ExtResource("3_qe12f")
+theme_override_styles/hover_mirrored = ExtResource("3_qe12f")
 theme_override_styles/hover = SubResource("StyleBoxFlat_qe12f")
-theme_override_styles/normal = SubResource("StyleBoxFlat_nlkkf")
+theme_override_styles/pressed_mirrored = ExtResource("3_qe12f")
+theme_override_styles/pressed = ExtResource("3_qe12f")
+theme_override_styles/normal_mirrored = ExtResource("3_qe12f")
+theme_override_styles/normal = ExtResource("3_qe12f")
 text = "OPTIONS"
 metadata/_edit_use_anchors_ = true
 
@@ -406,8 +411,12 @@ anchor_right = 0.893803
 anchor_bottom = 0.890233
 theme_override_fonts/font = ExtResource("2_jix8l")
 theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = ExtResource("3_qe12f")
+theme_override_styles/disabled_mirrored = ExtResource("3_qe12f")
+theme_override_styles/disabled = ExtResource("3_qe12f")
+theme_override_styles/hover_pressed_mirrored = ExtResource("3_qe12f")
 theme_override_styles/hover = SubResource("StyleBoxFlat_qe12f")
-theme_override_styles/normal = SubResource("StyleBoxFlat_nlkkf")
+theme_override_styles/normal = ExtResource("3_qe12f")
 text = "CREDITS"
 metadata/_edit_use_anchors_ = true
 
@@ -461,6 +470,7 @@ anchor_right = 0.836804
 anchor_bottom = 0.435754
 max_value = 1.0
 step = 0.001
+value = 0.5
 script = ExtResource("3_glbon")
 bus_name = "music"
 metadata/_edit_use_anchors_ = true
@@ -484,6 +494,11 @@ anchor_left = 0.0932197
 anchor_top = 0.628803
 anchor_right = 0.841961
 anchor_bottom = 0.666874
+max_value = 1.0
+step = 0.001
+value = 0.5
+script = ExtResource("4_nlkkf")
+bus_name = "SFX"
 metadata/_edit_use_anchors_ = true
 
 [node name="Button4" type="Button" parent="CanvasLayer/Panel/Panel2"]
@@ -495,8 +510,12 @@ anchor_right = 0.893803
 anchor_bottom = 0.890233
 theme_override_fonts/font = ExtResource("2_jix8l")
 theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = ExtResource("3_qe12f")
+theme_override_styles/disabled_mirrored = ExtResource("3_qe12f")
+theme_override_styles/disabled = ExtResource("3_qe12f")
+theme_override_styles/hover_pressed_mirrored = ExtResource("3_qe12f")
 theme_override_styles/hover = SubResource("StyleBoxFlat_qe12f")
-theme_override_styles/normal = SubResource("StyleBoxFlat_nlkkf")
+theme_override_styles/normal = ExtResource("3_qe12f")
 text = "EXIT"
 metadata/_edit_use_anchors_ = true
 
@@ -538,8 +557,13 @@ anchor_right = 0.893803
 anchor_bottom = 0.890233
 theme_override_fonts/font = ExtResource("2_jix8l")
 theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = ExtResource("3_qe12f")
+theme_override_styles/disabled_mirrored = ExtResource("3_qe12f")
+theme_override_styles/disabled = ExtResource("3_qe12f")
+theme_override_styles/hover_pressed_mirrored = ExtResource("3_qe12f")
+theme_override_styles/hover_pressed = ExtResource("3_qe12f")
 theme_override_styles/hover = SubResource("StyleBoxFlat_qe12f")
-theme_override_styles/normal = SubResource("StyleBoxFlat_nlkkf")
+theme_override_styles/normal = ExtResource("3_qe12f")
 text = "EXIT"
 metadata/_edit_use_anchors_ = true
 
@@ -579,5 +603,6 @@ texture = ExtResource("2_fu7sn")
 [connection signal="pressed" from="CanvasLayer/Panel/Panel/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="CanvasLayer/Panel/Panel/Button3" to="." method="_on_button_3_pressed"]
 [connection signal="value_changed" from="CanvasLayer/Panel/Panel2/HSlider" to="CanvasLayer/Panel/Panel2/HSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/Panel/Panel2/HSlider2" to="CanvasLayer/Panel/Panel2/HSlider2" method="_on_value_changed"]
 [connection signal="pressed" from="CanvasLayer/Panel/Panel2/Button4" to="." method="_on_button_4_pressed"]
 [connection signal="pressed" from="CanvasLayer/Panel/Panel3/Button5" to="." method="_on_button_5_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=4 uid="uid://c5sdjc2i6rng5"]
+[gd_scene load_steps=78 format=4 uid="uid://c5sdjc2i6rng5"]
 
 [ext_resource type="Texture2D" uid="uid://bx1oiqfsx33on" path="res://assets/background.png" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://cymf5p6qyb7i3" path="res://character_body_2d.gd" id="1_272bh"]
@@ -24,7 +24,10 @@
 [ext_resource type="PackedScene" uid="uid://e5rr3jxwua74" path="res://punch.tscn" id="19_cegan"]
 [ext_resource type="PackedScene" uid="uid://npovc3wa1ja2" path="res://lightning.tscn" id="20_82xsv"]
 [ext_resource type="Script" uid="uid://d1peq5lnwfkex" path="res://credits.gd" id="20_lswn8"]
+[ext_resource type="Script" uid="uid://wn0pm536latg" path="res://options.gd" id="21_kq58d"]
+[ext_resource type="Script" uid="uid://ddgtkg1df2sug" path="res://music-volume.gd" id="21_qsp4k"]
 [ext_resource type="PackedScene" uid="uid://p6it7nw00761" path="res://stars.tscn" id="21_ryguw"]
+[ext_resource type="Script" uid="uid://guhj4whm5lg5" path="res://sfx-volume.gd" id="22_kq58d"]
 [ext_resource type="PackedScene" uid="uid://b6mk3agrxlf1q" path="res://trophy.tscn" id="23_1u8w0"]
 [ext_resource type="AudioStream" uid="uid://bcpnbdwl24vqg" path="res://assets/361636__jofae__8-bit-slam.mp3" id="27_a6jrf"]
 
@@ -1442,6 +1445,31 @@ corner_radius_bottom_left = 15
 shadow_color = Color(0.389287, 0.389287, 0.389287, 0.6)
 shadow_size = 20
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_seu75"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_htxhm"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_color = Color(0.412152, 0.412152, 0.412152, 0.6)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jq2sk"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_color = Color(0.389287, 0.389287, 0.389287, 0.6)
+shadow_size = 20
+
 [sub_resource type="Curve2D" id="Curve2D_cegan"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 62.3762, 194.554, 0, 0, 0, 0, 169.802, 195.049)
@@ -1601,6 +1629,15 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_dg77c")
 text = "RETRY"
 metadata/_edit_use_anchors_ = true
 
+[node name="hit" type="Panel" parent="UI"]
+visible = false
+anchors_preset = -1
+anchor_right = 1.03559
+anchor_bottom = 1.02623
+offset_bottom = -6.10352e-05
+theme_override_styles/panel = SubResource("StyleBoxFlat_074og")
+metadata/_edit_use_anchors_ = true
+
 [node name="LevelCleared" type="Panel" parent="UI"]
 visible = false
 anchors_preset = -1
@@ -1651,15 +1688,6 @@ offset_right = 831.0
 offset_bottom = 398.0
 texture = ExtResource("18_1u8w0")
 expand_mode = 1
-
-[node name="hit" type="Panel" parent="UI"]
-visible = false
-anchors_preset = -1
-anchor_right = 1.03559
-anchor_bottom = 1.02623
-offset_bottom = -6.10352e-05
-theme_override_styles/panel = SubResource("StyleBoxFlat_074og")
-metadata/_edit_use_anchors_ = true
 
 [node name="PauseMenu" type="Panel" parent="UI"]
 visible = false
@@ -1791,6 +1819,101 @@ text = "Pixel Adventure 1 -- Itch.io
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel2" type="Panel" parent="UI"]
+anchors_preset = -1
+anchor_left = 0.334485
+anchor_top = 0.180652
+anchor_right = 0.665515
+anchor_bottom = 0.819348
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_seu75")
+script = ExtResource("21_kq58d")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="UI/Panel2"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0880637
+anchor_top = 0.028866
+anchor_right = 0.906755
+anchor_bottom = 0.221603
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("10_4c57u")
+theme_override_font_sizes/font_size = 80
+text = "OPTIONS"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="UI/Panel2"]
+texture_filter = 1
+layout_mode = 0
+anchor_left = 0.0854964
+anchor_top = 0.261742
+anchor_right = 0.629565
+anchor_bottom = 0.3593
+offset_bottom = -13.0
+theme_override_fonts/font = ExtResource("10_4c57u")
+theme_override_font_sizes/font_size = 40
+text = "MUSIC VOLUME"
+metadata/_edit_use_anchors_ = true
+
+[node name="HSlider" type="HSlider" parent="UI/Panel2"]
+layout_mode = 0
+anchor_left = 0.0880627
+anchor_top = 0.397683
+anchor_right = 0.836804
+anchor_bottom = 0.435754
+max_value = 1.0
+step = 0.001
+value = 0.5
+script = ExtResource("21_qsp4k")
+bus_name = "music"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label3" type="Label" parent="UI/Panel2"]
+texture_filter = 1
+layout_mode = 0
+anchor_left = 0.0906534
+anchor_top = 0.492862
+anchor_right = 0.634722
+anchor_bottom = 0.59042
+offset_bottom = 1.52588e-05
+theme_override_fonts/font = ExtResource("10_4c57u")
+theme_override_font_sizes/font_size = 40
+text = "SFX VOLUME"
+metadata/_edit_use_anchors_ = true
+
+[node name="HSlider2" type="HSlider" parent="UI/Panel2"]
+layout_mode = 0
+anchor_left = 0.0932197
+anchor_top = 0.628803
+anchor_right = 0.841961
+anchor_bottom = 0.666874
+max_value = 1.0
+step = 0.001
+value = 0.5
+script = ExtResource("22_kq58d")
+bus_name = "SFX"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button4" type="Button" parent="UI/Panel2"]
+texture_filter = 1
+layout_mode = 0
+anchor_left = 0.0932455
+anchor_top = 0.759362
+anchor_right = 0.893803
+anchor_bottom = 0.890233
+theme_override_fonts/font = ExtResource("10_4c57u")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/hover = SubResource("StyleBoxFlat_htxhm")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jq2sk")
+text = "EXIT"
 metadata/_edit_use_anchors_ = true
 
 [node name="Path2D" parent="." instance=ExtResource("13_ycdy4")]
@@ -2108,10 +2231,15 @@ scale = Vector2(1.175, 1.175)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("27_a6jrf")
+volume_db = -10.058
 bus = &"SFX"
 
 [connection signal="pressed" from="UI/GameOver/Button" to="UI/GameOver" method="_on_button_pressed"]
 [connection signal="pressed" from="UI/LevelCleared/Button" to="UI/LevelCleared" method="_on_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/Button" to="UI/PauseMenu" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/PauseMenu/Button2" to="UI/PauseMenu" method="_on_button_2_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/Button3" to="UI/credits" method="_on_button_3_pressed"]
 [connection signal="pressed" from="UI/credits/Button5" to="UI/credits" method="_on_button_5_pressed"]
+[connection signal="value_changed" from="UI/Panel2/HSlider" to="UI/Panel2/HSlider" method="_on_value_changed"]
+[connection signal="value_changed" from="UI/Panel2/HSlider2" to="UI/Panel2/HSlider2" method="_on_value_changed"]
+[connection signal="pressed" from="UI/Panel2/Button4" to="UI/Panel2" method="_on_button_4_pressed"]
