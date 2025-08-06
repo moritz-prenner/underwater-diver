@@ -1,105 +1,146 @@
-[gd_scene load_steps=27 format=3 uid="uid://npovc3wa1ja2"]
+[gd_scene load_steps=31 format=3 uid="uid://npovc3wa1ja2"]
 
 [ext_resource type="Script" uid="uid://dgc7qyrq0fix1" path="res://lightning.gd" id="1_888k8"]
 [ext_resource type="Texture2D" uid="uid://rsamlim243s4" path="res://assets/Lightning Trap - Level 3.png" id="2_mwoj2"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_auma5"]
-atlas = ExtResource("2_mwoj2")
-region = Rect2(0, 0, 96, 96)
+[sub_resource type="Curve2D" id="Curve2D_888k8"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 62, 21739, 0, 0, 0, 0, -17, 0, 0, 0, 0, 0, 20, -1)
+}
+point_count = 3
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_m683h"]
-atlas = ExtResource("2_mwoj2")
-region = Rect2(96, 0, 96, 96)
+[sub_resource type="Animation" id="Animation_888k8"]
+resource_name = "move-lightning"
+length = 5.25
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.75, 3.5, 3.51, 5.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.9985, 1.0, 0.9987, 0.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_mwoj2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.759]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_auma5"]
+_data = {
+&"RESET": SubResource("Animation_mwoj2"),
+&"move-lightning": SubResource("Animation_888k8")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m683h"]
+size = Vector2(24, 89)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f8xya"]
 atlas = ExtResource("2_mwoj2")
-region = Rect2(192, 0, 96, 96)
+region = Rect2(288, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hp0ur"]
 atlas = ExtResource("2_mwoj2")
-region = Rect2(288, 0, 96, 96)
+region = Rect2(384, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xuhhs"]
 atlas = ExtResource("2_mwoj2")
-region = Rect2(384, 0, 96, 96)
+region = Rect2(480, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5cnhv"]
 atlas = ExtResource("2_mwoj2")
-region = Rect2(480, 0, 96, 96)
+region = Rect2(576, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qkd8p"]
 atlas = ExtResource("2_mwoj2")
-region = Rect2(576, 0, 96, 96)
+region = Rect2(672, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xtu2r"]
 atlas = ExtResource("2_mwoj2")
-region = Rect2(672, 0, 96, 96)
+region = Rect2(768, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gnqkk"]
 atlas = ExtResource("2_mwoj2")
-region = Rect2(768, 0, 96, 96)
+region = Rect2(864, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q835i"]
 atlas = ExtResource("2_mwoj2")
-region = Rect2(864, 0, 96, 96)
+region = Rect2(960, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_144si"]
 atlas = ExtResource("2_mwoj2")
-region = Rect2(960, 0, 96, 96)
+region = Rect2(1056, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m8nvs"]
 atlas = ExtResource("2_mwoj2")
-region = Rect2(1056, 0, 96, 96)
+region = Rect2(1152, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xsu8v"]
 atlas = ExtResource("2_mwoj2")
-region = Rect2(1152, 0, 96, 96)
+region = Rect2(1248, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wd73o"]
 atlas = ExtResource("2_mwoj2")
-region = Rect2(1248, 0, 96, 96)
+region = Rect2(1344, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yoq5d"]
 atlas = ExtResource("2_mwoj2")
-region = Rect2(1344, 0, 96, 96)
+region = Rect2(1440, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p2iys"]
 atlas = ExtResource("2_mwoj2")
-region = Rect2(1440, 0, 96, 96)
+region = Rect2(1536, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n7kga"]
 atlas = ExtResource("2_mwoj2")
-region = Rect2(1536, 0, 96, 96)
+region = Rect2(1632, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ht2gh"]
 atlas = ExtResource("2_mwoj2")
-region = Rect2(1632, 0, 96, 96)
+region = Rect2(1728, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rfwqi"]
 atlas = ExtResource("2_mwoj2")
-region = Rect2(1728, 0, 96, 96)
+region = Rect2(1824, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cp7hw"]
 atlas = ExtResource("2_mwoj2")
-region = Rect2(1824, 0, 96, 96)
+region = Rect2(1920, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mw0yp"]
 atlas = ExtResource("2_mwoj2")
-region = Rect2(1920, 0, 96, 96)
+region = Rect2(2016, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_coun3"]
 atlas = ExtResource("2_mwoj2")
-region = Rect2(2016, 0, 96, 96)
+region = Rect2(0, 0, 96, 96)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_hb64c"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hb64c"]
+atlas = ExtResource("2_mwoj2")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ohgfu"]
+atlas = ExtResource("2_mwoj2")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_864qx"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_auma5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m683h")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_f8xya")
 }, {
@@ -159,24 +200,47 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_coun3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hb64c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohgfu")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 4.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_888k8"]
-size = Vector2(49, 98)
+[node name="lightning" type="Path2D"]
+curve = SubResource("Curve2D_888k8")
 
-[node name="lightning" type="Area2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(62, 21739)
+rotation = -0.00684921
+rotates = false
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
+remote_path = NodePath("../../Area2D")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_auma5")
+}
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(62, 21739)
+rotation = -0.00684921
+scale = Vector2(1, 1)
 script = ExtResource("1_888k8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.999979, -0.00684834)
+shape = SubResource("RectangleShape2D_m683h")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_hb64c")
+sprite_frames = SubResource("SpriteFrames_864qx")
+frame_progress = 0.337991
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 0)
-shape = SubResource("RectangleShape2D_888k8")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

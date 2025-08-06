@@ -6,7 +6,8 @@ var possibleTrigger = true
 
 @onready var enemy: Path2D = $"../../Path2D"
 
-@onready var bubbles: Area2D = $"../../oxygenCluster/oxygen"
+
+
 @onready var hit: Panel = $"../hit"
 @onready var player: CharacterBody2D = $"../../CharacterBody2D"
 @onready var checkpoint1: Node2D = $"../../checkpoint1"
@@ -50,7 +51,7 @@ func _on_button_pressed() -> void:
 			player.position = checkpoint2.position
 	hp.hp = 100
 	oxygen.oxygen = 100
-	await get_tree().create_timer(1.0).timeout
 	possibleTrigger = true
-	bubbles.reactivate()
 	enemy.reset()
+	get_tree().call_group("bubbles", "reactivate")
+	get_tree().call_group("stars", "reactivate")

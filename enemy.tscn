@@ -126,7 +126,7 @@ script = ExtResource("1_4gyqm")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
 position = Vector2(81.6832, 753.96)
-rotation = -0.00574714
+rotation = -0.0057468
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="PathFollow2D"]
 remote_path = NodePath("../../Area2D")
