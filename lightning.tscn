@@ -5,9 +5,9 @@
 
 [sub_resource type="Curve2D" id="Curve2D_888k8"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 62, 21739, 0, 0, 0, 0, -17, 0, 0, 0, 0, 0, 20, -1)
+"points": PackedVector2Array(0, 0, 0, 0, 62, 21739, 0, 0, 0, 0, -16.9993, 216, 0, 0, 0, 0, -17, 0, 0, 0, 0, 0, 20, -1)
 }
-point_count = 3
+point_count = 4
 
 [sub_resource type="Animation" id="Animation_888k8"]
 resource_name = "move-lightning"

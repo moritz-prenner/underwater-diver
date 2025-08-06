@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=4 uid="uid://c5sdjc2i6rng5"]
+[gd_scene load_steps=81 format=4 uid="uid://c5sdjc2i6rng5"]
 
 [ext_resource type="Texture2D" uid="uid://bx1oiqfsx33on" path="res://assets/background.png" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://cymf5p6qyb7i3" path="res://character_body_2d.gd" id="1_272bh"]
@@ -22,7 +22,6 @@
 [ext_resource type="StyleBox" uid="uid://bcrq3dvppntqs" path="res://main_menu.tres" id="17_seu75"]
 [ext_resource type="Texture2D" uid="uid://bx4epeval77mb" path="res://assets/star1.png" id="18_1u8w0"]
 [ext_resource type="Script" uid="uid://qgbkaxnj5rbg" path="res://pause_menu.gd" id="19_0odxb"]
-[ext_resource type="PackedScene" uid="uid://e5rr3jxwua74" path="res://punch.tscn" id="19_cegan"]
 [ext_resource type="PackedScene" uid="uid://npovc3wa1ja2" path="res://lightning.tscn" id="20_82xsv"]
 [ext_resource type="Script" uid="uid://d1peq5lnwfkex" path="res://credits.gd" id="20_lswn8"]
 [ext_resource type="Script" uid="uid://wn0pm536latg" path="res://options.gd" id="21_kq58d"]
@@ -30,6 +29,8 @@
 [ext_resource type="PackedScene" uid="uid://p6it7nw00761" path="res://stars.tscn" id="21_ryguw"]
 [ext_resource type="Script" uid="uid://guhj4whm5lg5" path="res://sfx-volume.gd" id="22_kq58d"]
 [ext_resource type="PackedScene" uid="uid://b6mk3agrxlf1q" path="res://trophy.tscn" id="23_1u8w0"]
+[ext_resource type="Script" uid="uid://bcp3fgjd61ka1" path="res://end_message.gd" id="25_jq2sk"]
+[ext_resource type="PackedScene" uid="uid://cyaylkcqtscwh" path="res://saw.tscn" id="27_4k2k6"]
 [ext_resource type="AudioStream" uid="uid://bcpnbdwl24vqg" path="res://assets/361636__jofae__8-bit-slam.mp3" id="27_a6jrf"]
 [ext_resource type="Script" uid="uid://dc5q00pcbmkpm" path="res://checkpointHandeler.gd" id="32_htxhm"]
 
@@ -1472,41 +1473,23 @@ corner_radius_bottom_left = 15
 shadow_color = Color(0.389287, 0.389287, 0.389287, 0.6)
 shadow_size = 20
 
+[sub_resource type="Curve2D" id="Curve2D_4k2k6"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 14.7971, 37.7088, 0, 0, 0, 0, 158.473, 38.1862)
+}
+point_count = 2
+
 [sub_resource type="Curve2D" id="Curve2D_htxhm"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -78.7129, 729.703, 0, 0, 0, 0, 56.4357, 729.703)
+"points": PackedVector2Array(0, 0, 0, 0, 12.4105, 33.4129, 0, 0, 0, 0, 88.7828, 16.7064, 0, 0, 0, 0, 149.881, 16.7064, 0, 0, 0, 0, 207.16, 40.5728)
 }
-point_count = 2
+point_count = 4
 
-[sub_resource type="Curve2D" id="Curve2D_cegan"]
+[sub_resource type="Curve2D" id="Curve2D_jq2sk"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 62.3762, 194.554, 0, 0, 0, 0, 169.802, 195.049)
+"points": PackedVector2Array(0, 0, 0, 0, 10.5012, 8.11456, 0, 0, 0, 0, 144.308, 8.11456, 0, 0, 0, 0, 242.526, 6.68256)
 }
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_kq58d"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 60.891, 197.525, 0, 0, 0, 0, 287.129, 196.04)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_seu75"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 60.3961, 202.475, 0, 0, 0, 0, 188.119, 202.97)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_2cqfq"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -114.356, 193.564, 0, 0, 0, 0, 228.218, 193.069)
-}
-point_count = 2
-
-[sub_resource type="Curve2D" id="Curve2D_yaehf"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -116.337, 196.04, 0, 0, 0, 0, 114.356, 195.05)
-}
-point_count = 2
+point_count = 3
 
 [node name="Node" type="Node"]
 
@@ -1888,6 +1871,7 @@ autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 
 [node name="Panel2" type="Panel" parent="UI"]
+visible = false
 anchors_preset = -1
 anchor_left = 0.334485
 anchor_top = 0.180652
@@ -1991,110 +1975,50 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_jq2sk")
 text = "EXIT"
 metadata/_edit_use_anchors_ = true
 
-[node name="Path2D" parent="." instance=ExtResource("13_ycdy4")]
-position = Vector2(749, 725)
-scale = Vector2(2.02, 2.02)
+[node name="endMessage" type="Panel" parent="UI"]
+visible = false
+anchors_preset = -1
+anchor_right = 1.00694
+anchor_bottom = 1.00617
+offset_bottom = -6.10352e-05
+script = ExtResource("25_jq2sk")
+metadata/_edit_use_anchors_ = true
 
-[node name="Path2D2" parent="." instance=ExtResource("13_ycdy4")]
-position = Vector2(32, -922)
-scale = Vector2(2.02, 2.02)
+[node name="Label2" type="Label" parent="UI/endMessage"]
+layout_mode = 0
+anchor_left = 0.230173
+anchor_top = 0.0598161
+anchor_right = 0.772417
+anchor_bottom = 0.291412
+offset_bottom = 1.52588e-05
+theme_override_fonts/font = ExtResource("10_4c57u")
+theme_override_font_sizes/font_size = 150
+text = "YOU DID IT!"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="Path2D3" parent="." instance=ExtResource("13_ycdy4")]
-position = Vector2(96, -834)
-scale = Vector2(2.02, 2.02)
-
-[node name="Path2D23" parent="." instance=ExtResource("13_ycdy4")]
-position = Vector2(1810, -787)
-scale = Vector2(2.02, 2.02)
-curve = SubResource("Curve2D_htxhm")
-
-[node name="Path2D11" parent="." instance=ExtResource("13_ycdy4")]
-position = Vector2(693, -563)
-scale = Vector2(2.02, 2.02)
-
-[node name="Path2D5" parent="." instance=ExtResource("13_ycdy4")]
-position = Vector2(-37, -1288)
-scale = Vector2(2.02, 2.02)
-
-[node name="Path2D9" parent="." instance=ExtResource("13_ycdy4")]
-position = Vector2(1205, 229)
-scale = Vector2(2.02, 2.02)
-curve = SubResource("Curve2D_cegan")
-
-[node name="Path2D12" parent="." instance=ExtResource("13_ycdy4")]
-position = Vector2(1971, 21)
-scale = Vector2(2.02, 2.02)
-curve = SubResource("Curve2D_cegan")
-
-[node name="Path2D13" parent="." instance=ExtResource("13_ycdy4")]
-position = Vector2(1964, -124)
-scale = Vector2(2.02, 2.02)
-curve = SubResource("Curve2D_cegan")
-
-[node name="Path2D14" parent="." instance=ExtResource("13_ycdy4")]
-position = Vector2(3269, 274)
-scale = Vector2(2.02, 2.02)
-curve = SubResource("Curve2D_kq58d")
-
-[node name="Path2D15" parent="." instance=ExtResource("13_ycdy4")]
-position = Vector2(3427, 79)
-scale = Vector2(2.02, 2.02)
-curve = SubResource("Curve2D_seu75")
-
-[node name="Path2D16" parent="." instance=ExtResource("13_ycdy4")]
-position = Vector2(3360, 3)
-scale = Vector2(2.02, 2.02)
-curve = SubResource("Curve2D_seu75")
-
-[node name="Path2D17" parent="." instance=ExtResource("13_ycdy4")]
-position = Vector2(3294, -73)
-scale = Vector2(2.02, 2.02)
-curve = SubResource("Curve2D_seu75")
-
-[node name="Path2D18" parent="." instance=ExtResource("13_ycdy4")]
-position = Vector2(3231, -153)
-scale = Vector2(2.02, 2.02)
-curve = SubResource("Curve2D_seu75")
-
-[node name="Path2D19" parent="." instance=ExtResource("13_ycdy4")]
-position = Vector2(3163, -228)
-scale = Vector2(2.02, 2.02)
-curve = SubResource("Curve2D_seu75")
-
-[node name="Path2D20" parent="." instance=ExtResource("13_ycdy4")]
-position = Vector2(2808, -72)
-scale = Vector2(2.02, 2.02)
-curve = SubResource("Curve2D_seu75")
-
-[node name="Path2D21" parent="." instance=ExtResource("13_ycdy4")]
-position = Vector2(2811, 89)
-scale = Vector2(2.02, 2.02)
-curve = SubResource("Curve2D_seu75")
-
-[node name="Path2D22" parent="." instance=ExtResource("13_ycdy4")]
-position = Vector2(2814, 261)
-scale = Vector2(2.02, 2.02)
-curve = SubResource("Curve2D_seu75")
-
-[node name="Path2D10" parent="." instance=ExtResource("13_ycdy4")]
-position = Vector2(1207, 560)
-scale = Vector2(2.02, 2.02)
-curve = SubResource("Curve2D_cegan")
-
-[node name="Path2D4" parent="." instance=ExtResource("13_ycdy4")]
-position = Vector2(285, 486)
-scale = Vector2(2.02, 2.02)
-curve = SubResource("Curve2D_2cqfq")
-
-[node name="Path2D7" parent="." instance=ExtResource("13_ycdy4")]
-position = Vector2(911, -338)
-scale = Vector2(2.02, 2.02)
-curve = SubResource("Curve2D_2cqfq")
-
-[node name="Path2D6" parent="." instance=ExtResource("13_ycdy4")]
-position = Vector2(957, 186)
-scale = Vector2(2.02, 2.02)
-curve = SubResource("Curve2D_yaehf")
+[node name="Button" type="Button" parent="UI/endMessage"]
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.272414
+anchor_top = 0.404141
+anchor_right = 0.727586
+anchor_bottom = 0.595859
+offset_bottom = 3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("10_4c57u")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/focus = ExtResource("17_seu75")
+theme_override_styles/disabled_mirrored = ExtResource("17_seu75")
+theme_override_styles/disabled = ExtResource("17_seu75")
+theme_override_styles/hover_pressed_mirrored = ExtResource("17_seu75")
+theme_override_styles/hover_pressed = ExtResource("17_seu75")
+theme_override_styles/normal = SubResource("StyleBoxFlat_dg77c")
+text = "RESTART"
+metadata/_edit_use_anchors_ = true
 
 [node name="oxygenCluster" type="Node" parent="."]
 
@@ -2123,7 +2047,7 @@ position = Vector2(1099, 690)
 scale = Vector2(0.185, 0.185)
 
 [node name="oxygen15" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
-position = Vector2(729, 462)
+position = Vector2(769, 462)
 scale = Vector2(0.185, 0.185)
 
 [node name="oxygen16" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
@@ -2155,7 +2079,7 @@ position = Vector2(1191, 201)
 scale = Vector2(0.185, 0.185)
 
 [node name="oxygen28" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
-position = Vector2(1346, 313)
+position = Vector2(1192, 266)
 scale = Vector2(0.185, 0.185)
 
 [node name="oxygen29" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
@@ -2163,7 +2087,7 @@ position = Vector2(1326, 543)
 scale = Vector2(0.185, 0.185)
 
 [node name="oxygen30" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
-position = Vector2(1326, 732)
+position = Vector2(1329, 887)
 scale = Vector2(0.185, 0.185)
 
 [node name="oxygen31" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
@@ -2175,11 +2099,11 @@ position = Vector2(1945, 965)
 scale = Vector2(0.185, 0.185)
 
 [node name="oxygen34" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
-position = Vector2(1646, 778)
+position = Vector2(1850, 968)
 scale = Vector2(0.185, 0.185)
 
 [node name="oxygen35" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
-position = Vector2(1817, 427)
+position = Vector2(1760, 409)
 scale = Vector2(0.185, 0.185)
 
 [node name="oxygen36" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
@@ -2188,6 +2112,102 @@ scale = Vector2(0.185, 0.185)
 
 [node name="oxygen37" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
 position = Vector2(1936, 158)
+scale = Vector2(0.185, 0.185)
+
+[node name="oxygen49" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
+position = Vector2(2294, 957)
+scale = Vector2(0.185, 0.185)
+
+[node name="oxygen50" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
+position = Vector2(2626, 841)
+scale = Vector2(0.185, 0.185)
+
+[node name="oxygen51" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
+position = Vector2(2586, 709)
+scale = Vector2(0.185, 0.185)
+
+[node name="oxygen52" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
+position = Vector2(2586, 709)
+scale = Vector2(0.185, 0.185)
+
+[node name="oxygen53" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
+position = Vector2(2462, 308)
+scale = Vector2(0.185, 0.185)
+
+[node name="oxygen54" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
+position = Vector2(2475, 393)
+scale = Vector2(0.185, 0.185)
+
+[node name="oxygen55" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
+position = Vector2(2585, 501)
+scale = Vector2(0.185, 0.185)
+
+[node name="oxygen56" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
+position = Vector2(2715, 404)
+scale = Vector2(0.185, 0.185)
+
+[node name="oxygen57" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
+position = Vector2(3066, 217)
+scale = Vector2(0.185, 0.185)
+
+[node name="oxygen64" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
+position = Vector2(3160, 206)
+scale = Vector2(0.185, 0.185)
+
+[node name="oxygen58" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
+position = Vector2(3137, 294)
+scale = Vector2(0.185, 0.185)
+
+[node name="oxygen59" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
+position = Vector2(3063, 428)
+scale = Vector2(0.185, 0.185)
+
+[node name="oxygen60" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
+position = Vector2(3058, 607)
+scale = Vector2(0.185, 0.185)
+
+[node name="oxygen61" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
+position = Vector2(3187, 756)
+scale = Vector2(0.185, 0.185)
+
+[node name="oxygen62" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
+position = Vector2(3184, 833)
+scale = Vector2(0.185, 0.185)
+
+[node name="oxygen63" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
+position = Vector2(3443, 957)
+scale = Vector2(0.185, 0.185)
+
+[node name="oxygen65" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
+position = Vector2(3516, 958)
+scale = Vector2(0.185, 0.185)
+
+[node name="oxygen66" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
+position = Vector2(3589, 959)
+scale = Vector2(0.185, 0.185)
+
+[node name="oxygen67" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
+position = Vector2(3422, 586)
+scale = Vector2(0.185, 0.185)
+
+[node name="oxygen68" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
+position = Vector2(3495, 587)
+scale = Vector2(0.185, 0.185)
+
+[node name="oxygen69" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
+position = Vector2(3568, 588)
+scale = Vector2(0.185, 0.185)
+
+[node name="oxygen70" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
+position = Vector2(3302, 67)
+scale = Vector2(0.185, 0.185)
+
+[node name="oxygen71" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
+position = Vector2(3375, 68.0001)
+scale = Vector2(0.185, 0.185)
+
+[node name="oxygen72" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
+position = Vector2(3448, 69.0001)
 scale = Vector2(0.185, 0.185)
 
 [node name="oxygen38" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
@@ -2223,15 +2243,15 @@ position = Vector2(2192, 590)
 scale = Vector2(0.185, 0.185)
 
 [node name="oxygen47" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
-position = Vector2(2070, 691)
+position = Vector2(2065, 712)
 scale = Vector2(0.185, 0.185)
 
 [node name="oxygen48" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
-position = Vector2(2070, 691)
+position = Vector2(2141, 710)
 scale = Vector2(0.185, 0.185)
 
 [node name="oxygen33" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
-position = Vector2(1943, 882)
+position = Vector2(1901, 901)
 scale = Vector2(0.185, 0.185)
 
 [node name="oxygen22" parent="oxygenCluster" instance=ExtResource("14_w48qg")]
@@ -2290,116 +2310,106 @@ scale = Vector2(0.185, 0.185)
 position = Vector2(2927, 98)
 scale = Vector2(0.185, 0.185)
 
-[node name="Area2D" parent="." instance=ExtResource("19_cegan")]
-position = Vector2(615, 494)
+[node name="saw" parent="." instance=ExtResource("27_4k2k6")]
+position = Vector2(665, 498)
 rotation = -1.5708
 scale = Vector2(2.57, 2.57)
 
-[node name="Area2D5" parent="." instance=ExtResource("19_cegan")]
-position = Vector2(266, 58)
+[node name="saw3" parent="." instance=ExtResource("27_4k2k6")]
+position = Vector2(265, 8)
 rotation = 3.14159
 scale = Vector2(2.57, 2.57)
 
-[node name="Area2D2" parent="." instance=ExtResource("19_cegan")]
-position = Vector2(873, 181)
+[node name="saw2" parent="." instance=ExtResource("27_4k2k6")]
+position = Vector2(824, 213)
 rotation = 1.5708
 scale = Vector2(2.57, 2.57)
 
-[node name="Area2D3" parent="." instance=ExtResource("19_cegan")]
-position = Vector2(1096, 871)
+[node name="saw6" parent="." instance=ExtResource("27_4k2k6")]
+position = Vector2(1049, 848)
 rotation = 1.5708
 scale = Vector2(2.57, 2.57)
 
-[node name="Area2D13" parent="." instance=ExtResource("19_cegan")]
-position = Vector2(2056, 599)
+[node name="saw5" parent="." instance=ExtResource("27_4k2k6")]
+position = Vector2(2006, 632)
 rotation = 1.5708
 scale = Vector2(2.57, 2.57)
 
-[node name="Area2D6" parent="." instance=ExtResource("19_cegan")]
-position = Vector2(1451, 318)
+[node name="saw4" parent="." instance=ExtResource("27_4k2k6")]
+position = Vector2(1400, 328)
 rotation = 1.5708
 scale = Vector2(2.57, 2.57)
 
-[node name="Area2D4" parent="." instance=ExtResource("19_cegan")]
-position = Vector2(1222, 742)
+[node name="saw7" parent="." instance=ExtResource("27_4k2k6")]
+position = Vector2(1270, 725)
 rotation = -1.5708
 scale = Vector2(2.57, 2.57)
 
-[node name="Area2D7" parent="." instance=ExtResource("19_cegan")]
-position = Vector2(1543, 432)
+[node name="saw23" parent="." instance=ExtResource("27_4k2k6")]
+position = Vector2(1363, 153)
 rotation = -1.5708
 scale = Vector2(2.57, 2.57)
 
-[node name="Area2D8" parent="." instance=ExtResource("19_cegan")]
-position = Vector2(1543, 714)
+[node name="saw22" parent="." instance=ExtResource("27_4k2k6")]
+position = Vector2(1596, 708)
 rotation = -1.5708
 scale = Vector2(2.57, 2.57)
 
-[node name="Area2D9" parent="." instance=ExtResource("19_cegan")]
-position = Vector2(1543, 827)
+[node name="saw21" parent="." instance=ExtResource("27_4k2k6")]
+position = Vector2(1593, 832)
 rotation = -1.5708
 scale = Vector2(2.57, 2.57)
 
-[node name="Area2D14" parent="." instance=ExtResource("19_cegan")]
-position = Vector2(2156, 967)
+[node name="saw20" parent="." instance=ExtResource("27_4k2k6")]
+position = Vector2(2171, 1015)
 scale = Vector2(2.57, 2.57)
 
-[node name="Area2D15" parent="." instance=ExtResource("19_cegan")]
-position = Vector2(2057, 874)
+[node name="saw19" parent="." instance=ExtResource("27_4k2k6")]
+position = Vector2(2008, 863)
 rotation = 1.5708
 scale = Vector2(2.57, 2.57)
 
-[node name="Area2D19" parent="." instance=ExtResource("19_cegan")]
-position = Vector2(2938, 893)
+[node name="saw18" parent="." instance=ExtResource("27_4k2k6")]
+position = Vector2(2886, 851)
 rotation = 1.5708
 scale = Vector2(2.57, 2.57)
 
-[node name="Area2D21" parent="." instance=ExtResource("19_cegan")]
-position = Vector2(2940, 423)
+[node name="saw17" parent="." instance=ExtResource("27_4k2k6")]
+position = Vector2(2884, 315)
 rotation = 1.5708
 scale = Vector2(2.57, 2.57)
 
-[node name="Area2D22" parent="." instance=ExtResource("19_cegan")]
-position = Vector2(3188, 431)
+[node name="saw16" parent="." instance=ExtResource("27_4k2k6")]
+position = Vector2(3241, 372)
 rotation = -1.5708
 scale = Vector2(2.57, 2.57)
 
-[node name="Area2D23" parent="." instance=ExtResource("19_cegan")]
-position = Vector2(2940, 602)
+[node name="saw15" parent="." instance=ExtResource("27_4k2k6")]
+position = Vector2(2889, 610)
 rotation = 1.5708
 scale = Vector2(2.57, 2.57)
 
-[node name="Area2D24" parent="." instance=ExtResource("19_cegan")]
-position = Vector2(3188, 610)
-rotation = -1.5708
+[node name="saw13" parent="." instance=ExtResource("27_4k2k6")]
+position = Vector2(3072, 1014)
 scale = Vector2(2.57, 2.57)
 
-[node name="Area2D20" parent="." instance=ExtResource("19_cegan")]
-position = Vector2(3023, 967)
-scale = Vector2(2.57, 2.57)
-
-[node name="Area2D16" parent="." instance=ExtResource("19_cegan")]
-position = Vector2(3290, 829)
+[node name="saw11" parent="." instance=ExtResource("27_4k2k6")]
+position = Vector2(3241, 494)
 rotation = 1.5708
 scale = Vector2(2.57, 2.57)
 
-[node name="Area2D17" parent="." instance=ExtResource("19_cegan")]
-position = Vector2(3292, 473)
-rotation = 1.5708
-scale = Vector2(2.57, 2.57)
-
-[node name="Area2D18" parent="." instance=ExtResource("19_cegan")]
-position = Vector2(3864, 246)
+[node name="saw10" parent="." instance=ExtResource("27_4k2k6")]
+position = Vector2(3826, 222)
 rotation = -1.5708
 scale = Vector2(2.57, 2.57)
 
-[node name="Area2D10" parent="." instance=ExtResource("19_cegan")]
-position = Vector2(1959, 605)
+[node name="saw9" parent="." instance=ExtResource("27_4k2k6")]
+position = Vector2(1866, 486)
 rotation = -1.5708
 scale = Vector2(2.57, 2.57)
 
-[node name="Area2D12" parent="." instance=ExtResource("19_cegan")]
-position = Vector2(2341, 607)
+[node name="saw8" parent="." instance=ExtResource("27_4k2k6")]
+position = Vector2(2394, 504)
 rotation = -1.5708
 scale = Vector2(2.57, 2.57)
 
@@ -2476,10 +2486,6 @@ scale = Vector2(0.175, 0.175)
 position = Vector2(2463, 216)
 scale = Vector2(0.175, 0.175)
 
-[node name="stars8" parent="." instance=ExtResource("21_ryguw")]
-position = Vector2(3184, 209)
-scale = Vector2(0.175, 0.175)
-
 [node name="stars9" parent="." instance=ExtResource("21_ryguw")]
 position = Vector2(2932, 971)
 scale = Vector2(0.175, 0.175)
@@ -2513,6 +2519,90 @@ bus = &"SFX"
 [node name="handeler" type="Node" parent="."]
 script = ExtResource("32_htxhm")
 
+[node name="enemy" parent="." instance=ExtResource("13_ycdy4")]
+position = Vector2(161, 1682)
+scale = Vector2(2.095, 2.095)
+
+[node name="enemy3" parent="." instance=ExtResource("13_ycdy4")]
+position = Vector2(183, 533)
+scale = Vector2(2.095, 2.095)
+
+[node name="enemy19" parent="." instance=ExtResource("13_ycdy4")]
+position = Vector2(128, 169)
+scale = Vector2(2.095, 2.095)
+
+[node name="enemy2" parent="." instance=ExtResource("13_ycdy4")]
+position = Vector2(258, 615)
+scale = Vector2(2.095, 2.095)
+
+[node name="enemy20" parent="." instance=ExtResource("13_ycdy4")]
+position = Vector2(844, 883)
+scale = Vector2(2.095, 2.095)
+curve = SubResource("Curve2D_4k2k6")
+
+[node name="enemy7" parent="." instance=ExtResource("13_ycdy4")]
+position = Vector2(1298, 551)
+scale = Vector2(2.095, 2.095)
+
+[node name="enemy8" parent="." instance=ExtResource("13_ycdy4")]
+position = Vector2(1313, 893)
+scale = Vector2(2.095, 2.095)
+
+[node name="enemy9" parent="." instance=ExtResource("13_ycdy4")]
+position = Vector2(1680, 623)
+scale = Vector2(2.095, 2.095)
+
+[node name="enemy10" parent="." instance=ExtResource("13_ycdy4")]
+position = Vector2(1712, 708)
+scale = Vector2(2.095, 2.095)
+
+[node name="enemy11" parent="." instance=ExtResource("13_ycdy4")]
+position = Vector2(2068, 183)
+scale = Vector2(2.095, 2.095)
+
+[node name="enemy13" parent="." instance=ExtResource("13_ycdy4")]
+position = Vector2(2703, 162)
+scale = Vector2(2.095, 2.095)
+
+[node name="enemy14" parent="." instance=ExtResource("13_ycdy4")]
+position = Vector2(3588, 421)
+scale = Vector2(2.095, 2.095)
+
+[node name="enemy15" parent="." instance=ExtResource("13_ycdy4")]
+position = Vector2(3505, 351)
+scale = Vector2(2.095, 2.095)
+
+[node name="enemy16" parent="." instance=ExtResource("13_ycdy4")]
+position = Vector2(3409, 281)
+scale = Vector2(2.095, 2.095)
+
+[node name="enemy17" parent="." instance=ExtResource("13_ycdy4")]
+position = Vector2(3315, 200)
+scale = Vector2(2.095, 2.095)
+
+[node name="enemy18" parent="." instance=ExtResource("13_ycdy4")]
+position = Vector2(3314, 111)
+scale = Vector2(2.095, 2.095)
+
+[node name="enemy12" parent="." instance=ExtResource("13_ycdy4")]
+position = Vector2(2059, 420)
+scale = Vector2(2.095, 2.095)
+
+[node name="enemy5" parent="." instance=ExtResource("13_ycdy4")]
+position = Vector2(737, 507)
+scale = Vector2(2.095, 2.095)
+curve = SubResource("Curve2D_htxhm")
+
+[node name="enemy4" parent="." instance=ExtResource("13_ycdy4")]
+position = Vector2(85, 815)
+scale = Vector2(2.3915, 2.095)
+curve = SubResource("Curve2D_jq2sk")
+
+[node name="enemy6" parent="." instance=ExtResource("13_ycdy4")]
+position = Vector2(735, 54)
+scale = Vector2(2.3915, 2.095)
+curve = SubResource("Curve2D_jq2sk")
+
 [connection signal="pressed" from="UI/GameOver/Button" to="UI/GameOver" method="_on_button_pressed"]
 [connection signal="pressed" from="UI/LevelCleared/Button" to="UI/LevelCleared" method="_on_button_pressed"]
 [connection signal="pressed" from="UI/PauseMenu/Button" to="UI/PauseMenu" method="_on_button_pressed"]
@@ -2522,3 +2612,4 @@ script = ExtResource("32_htxhm")
 [connection signal="value_changed" from="UI/Panel2/HSlider" to="UI/Panel2/HSlider" method="_on_value_changed"]
 [connection signal="value_changed" from="UI/Panel2/HSlider2" to="UI/Panel2/HSlider2" method="_on_value_changed"]
 [connection signal="pressed" from="UI/Panel2/Button4" to="UI/Panel2" method="_on_button_4_pressed"]
+[connection signal="pressed" from="UI/endMessage/Button" to="UI/endMessage" method="_on_button_pressed"]

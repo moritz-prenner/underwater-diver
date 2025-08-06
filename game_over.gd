@@ -4,7 +4,7 @@ var checkpoint = 0
 
 var possibleTrigger = true
 
-@onready var enemy: Path2D = $"../../Path2D"
+@onready var enemy: Path2D = $"../../enemy"
 
 
 
