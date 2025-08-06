@@ -8,12 +8,9 @@ extends Area2D
 var firstTime = false 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	print(gameOver.checkpoint)
 	anim.play("default")
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 
 func _on_body_entered(body: Node2D) -> void:
@@ -24,5 +21,6 @@ func _on_body_entered(body: Node2D) -> void:
 		level_cleared.clear()
 		firstTime = true
 		gameOver.checkpoint += 1
+		print(gameOver.checkpoint)
 		
 		

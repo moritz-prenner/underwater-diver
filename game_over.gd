@@ -4,6 +4,8 @@ var checkpoint = 0
 
 var possibleTrigger = true
 
+@onready var enemy: Path2D = $"../../Path2D"
+
 @onready var bubbles: Area2D = $"../../oxygenCluster/oxygen"
 @onready var hit: Panel = $"../hit"
 @onready var player: CharacterBody2D = $"../../CharacterBody2D"
@@ -12,6 +14,7 @@ var possibleTrigger = true
 @onready var hp: ProgressBar = $"../ProgressBar2"
 @onready var oxygen: ProgressBar = $"../ProgressBar"
 @onready var checkpoint0: Node2D = $"../../checkpoint0"
+@onready var checkpoint2: Node2D = $"../../checkpoint2"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,7 +22,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func gameOver():
@@ -32,7 +35,6 @@ func gameOver():
 
 
 func _on_button_pressed() -> void:
-	print(checkpoint)
 	oxygen.shakePossible = false
 	possibleTrigger = false
 	get_tree().paused = false
@@ -44,8 +46,11 @@ func _on_button_pressed() -> void:
 			player.position = checkpoint0.position
 		1:
 			player.position = checkpoint1.position
+		2:
+			player.position = checkpoint2.position
 	hp.hp = 100
 	oxygen.oxygen = 100
 	await get_tree().create_timer(1.0).timeout
 	possibleTrigger = true
 	bubbles.reactivate()
+	enemy.reset()
