@@ -11,6 +11,5 @@ func _ready() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "CharacterBody2D":
 		anim.play("pressed")
-		
 		get_tree().paused = true
-		endMessage.visible = true
+		endMessage.gameEnded()

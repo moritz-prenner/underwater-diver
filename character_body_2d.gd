@@ -79,3 +79,4 @@ func play_hurt():
 	hurt_timer = HURT_DURATION
 	anim.play("hurt")
 	velocity = Vector2.ZERO
+	

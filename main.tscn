@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=4 uid="uid://c5sdjc2i6rng5"]
+[gd_scene load_steps=84 format=4 uid="uid://c5sdjc2i6rng5"]
 
 [ext_resource type="Texture2D" uid="uid://bx1oiqfsx33on" path="res://assets/background.png" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://cymf5p6qyb7i3" path="res://character_body_2d.gd" id="1_272bh"]
@@ -30,9 +30,11 @@
 [ext_resource type="Script" uid="uid://guhj4whm5lg5" path="res://sfx-volume.gd" id="22_kq58d"]
 [ext_resource type="PackedScene" uid="uid://b6mk3agrxlf1q" path="res://trophy.tscn" id="23_1u8w0"]
 [ext_resource type="Script" uid="uid://bcp3fgjd61ka1" path="res://end_message.gd" id="25_jq2sk"]
+[ext_resource type="Script" uid="uid://dqq7qnr8of8ky" path="res://timer.gd" id="26_0rl1p"]
 [ext_resource type="PackedScene" uid="uid://cyaylkcqtscwh" path="res://saw.tscn" id="27_4k2k6"]
 [ext_resource type="AudioStream" uid="uid://bcpnbdwl24vqg" path="res://assets/361636__jofae__8-bit-slam.mp3" id="27_a6jrf"]
 [ext_resource type="Script" uid="uid://dc5q00pcbmkpm" path="res://checkpointHandeler.gd" id="32_htxhm"]
+[ext_resource type="PackedScene" uid="uid://cd1d0fvloth1x" path="res://endTrophy.tscn" id="34_4k2k6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dg77c"]
 atlas = ExtResource("2_5vw27")
@@ -1473,6 +1475,13 @@ corner_radius_bottom_left = 15
 shadow_color = Color(0.389287, 0.389287, 0.389287, 0.6)
 shadow_size = 20
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4k2k6"]
+bg_color = Color(0, 0, 0, 0.776471)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
 [sub_resource type="Curve2D" id="Curve2D_4k2k6"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 14.7971, 37.7088, 0, 0, 0, 0, 158.473, 38.1862)
@@ -1976,7 +1985,6 @@ text = "EXIT"
 metadata/_edit_use_anchors_ = true
 
 [node name="endMessage" type="Panel" parent="UI"]
-visible = false
 anchors_preset = -1
 anchor_right = 1.00694
 anchor_bottom = 1.00617
@@ -2002,10 +2010,10 @@ metadata/_edit_use_anchors_ = true
 process_mode = 3
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.272414
-anchor_top = 0.404141
-anchor_right = 0.727586
-anchor_bottom = 0.595859
+anchor_left = 0.201725
+anchor_top = 0.627302
+anchor_right = 0.81121
+anchor_bottom = 0.819021
 offset_bottom = 3.05176e-05
 grow_horizontal = 2
 grow_vertical = 2
@@ -2017,7 +2025,63 @@ theme_override_styles/disabled = ExtResource("17_seu75")
 theme_override_styles/hover_pressed_mirrored = ExtResource("17_seu75")
 theme_override_styles/hover_pressed = ExtResource("17_seu75")
 theme_override_styles/normal = SubResource("StyleBoxFlat_dg77c")
-text = "RESTART"
+text = "Upload to Leaderboard"
+metadata/_edit_use_anchors_ = true
+
+[node name="displayFinishedTime" type="Label" parent="UI/endMessage"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 320.0
+offset_top = 219.0
+offset_right = 849.0
+offset_bottom = 399.0
+theme_override_fonts/font = ExtResource("10_4c57u")
+theme_override_font_sizes/font_size = 180
+text = "00:00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="UI/endMessage"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.281898
+anchor_top = 0.251534
+anchor_right = 0.735348
+anchor_bottom = 0.345093
+offset_left = 3.05176e-05
+offset_right = -6.10352e-05
+offset_bottom = 1.52588e-05
+theme_override_fonts/font = ExtResource("10_4c57u")
+theme_override_font_sizes/font_size = 60
+text = "Finishing Time:"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" type="Panel" parent="UI"]
+anchors_preset = -1
+anchor_left = 0.0347222
+anchor_top = 0.844136
+anchor_right = 0.265625
+anchor_bottom = 0.987654
+theme_override_styles/panel = SubResource("StyleBoxFlat_4k2k6")
+script = ExtResource("26_0rl1p")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="UI/Timer"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0413534
+anchor_right = 0.962406
+anchor_bottom = 1.01075
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("10_4c57u")
+theme_override_font_sizes/font_size = 80
+text = "00:00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="oxygenCluster" type="Node" parent="."]
@@ -2311,7 +2375,7 @@ position = Vector2(2927, 98)
 scale = Vector2(0.185, 0.185)
 
 [node name="saw" parent="." instance=ExtResource("27_4k2k6")]
-position = Vector2(665, 498)
+position = Vector2(771, 879)
 rotation = -1.5708
 scale = Vector2(2.57, 2.57)
 
@@ -2416,14 +2480,8 @@ scale = Vector2(2.57, 2.57)
 [node name="lightning" parent="." instance=ExtResource("20_82xsv")]
 position = Vector2(2007, 64)
 
-[node name="lightning6" parent="." instance=ExtResource("20_82xsv")]
-position = Vector2(2391, 959)
-
 [node name="lightning7" parent="." instance=ExtResource("20_82xsv")]
 position = Vector2(3235, 958)
-
-[node name="lightning12" parent="." instance=ExtResource("20_82xsv")]
-position = Vector2(2528, 703)
 
 [node name="lightning13" parent="." instance=ExtResource("20_82xsv")]
 position = Vector2(2556, 849)
@@ -2448,14 +2506,6 @@ rotation = 1.5708
 
 [node name="lightning5" parent="." instance=ExtResource("20_82xsv")]
 position = Vector2(2334, 758)
-rotation = 1.5708
-
-[node name="lightning3" parent="." instance=ExtResource("20_82xsv")]
-position = Vector2(1953, 344)
-rotation = 1.5708
-
-[node name="lightning4" parent="." instance=ExtResource("20_82xsv")]
-position = Vector2(1648, 215)
 rotation = 1.5708
 
 [node name="stars" parent="." instance=ExtResource("21_ryguw")]
@@ -2560,10 +2610,6 @@ scale = Vector2(2.095, 2.095)
 position = Vector2(2068, 183)
 scale = Vector2(2.095, 2.095)
 
-[node name="enemy13" parent="." instance=ExtResource("13_ycdy4")]
-position = Vector2(2703, 162)
-scale = Vector2(2.095, 2.095)
-
 [node name="enemy14" parent="." instance=ExtResource("13_ycdy4")]
 position = Vector2(3588, 421)
 scale = Vector2(2.095, 2.095)
@@ -2602,6 +2648,10 @@ curve = SubResource("Curve2D_jq2sk")
 position = Vector2(735, 54)
 scale = Vector2(2.3915, 2.095)
 curve = SubResource("Curve2D_jq2sk")
+
+[node name="endTrophy" parent="." instance=ExtResource("34_4k2k6")]
+position = Vector2(3771, 80)
+scale = Vector2(1.515, 1.515)
 
 [connection signal="pressed" from="UI/GameOver/Button" to="UI/GameOver" method="_on_button_pressed"]
 [connection signal="pressed" from="UI/LevelCleared/Button" to="UI/LevelCleared" method="_on_button_pressed"]

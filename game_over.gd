@@ -49,6 +49,8 @@ func _on_button_pressed() -> void:
 			player.position = checkpoint1.position
 		2:
 			player.position = checkpoint2.position
+		3:
+			player.position = checkpoint2.position
 	hp.hp = 100
 	oxygen.oxygen = 100
 	possibleTrigger = true
