@@ -4,6 +4,7 @@ extends Panel
 
 var startTime = 0
 var elapsedTime = 0
+var countTime = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	startTime = Time.get_ticks_msec()
@@ -11,8 +12,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	elapsedTime = Time.get_ticks_msec() - startTime
-	label.text = format_time(elapsedTime)
+	if countTime == true:
+		elapsedTime = Time.get_ticks_msec() - startTime
+		label.text = format_time(elapsedTime)
 	
 	
 func format_time(ms: int) -> String:
