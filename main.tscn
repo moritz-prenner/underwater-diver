@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=4 uid="uid://c5sdjc2i6rng5"]
+[gd_scene load_steps=85 format=4 uid="uid://c5sdjc2i6rng5"]
 
 [ext_resource type="Texture2D" uid="uid://bx1oiqfsx33on" path="res://assets/background.png" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://cymf5p6qyb7i3" path="res://character_body_2d.gd" id="1_272bh"]
@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://b6mk3agrxlf1q" path="res://trophy.tscn" id="23_1u8w0"]
 [ext_resource type="Script" uid="uid://bcp3fgjd61ka1" path="res://end_message.gd" id="25_jq2sk"]
 [ext_resource type="Script" uid="uid://dqq7qnr8of8ky" path="res://timer.gd" id="26_0rl1p"]
+[ext_resource type="Script" uid="uid://bvr3ulvmdkspe" path="res://submit_t_ime.gd" id="26_ok6jj"]
 [ext_resource type="PackedScene" uid="uid://cyaylkcqtscwh" path="res://saw.tscn" id="27_4k2k6"]
 [ext_resource type="AudioStream" uid="uid://bcpnbdwl24vqg" path="res://assets/361636__jofae__8-bit-slam.mp3" id="27_a6jrf"]
 [ext_resource type="Script" uid="uid://dc5q00pcbmkpm" path="res://checkpointHandeler.gd" id="32_htxhm"]
@@ -2059,6 +2060,74 @@ horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="submitTIme" type="Panel" parent="UI/endMessage"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.334485
+anchor_top = 0.180652
+anchor_right = 0.665515
+anchor_bottom = 0.819348
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_seu75")
+script = ExtResource("26_ok6jj")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="UI/endMessage/submitTIme"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0880637
+anchor_top = 0.028866
+anchor_right = 0.906755
+anchor_bottom = 0.221603
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("10_4c57u")
+theme_override_font_sizes/font_size = 80
+text = "Submit Time"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="UI/endMessage/submitTIme"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.085939
+anchor_top = 0.26175
+anchor_right = 0.901058
+anchor_bottom = 0.391424
+offset_bottom = -13.0
+theme_override_fonts/font = ExtResource("10_4c57u")
+theme_override_font_sizes/font_size = 40
+text = "Username:"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Button4" type="Button" parent="UI/endMessage/submitTIme"]
+process_mode = 3
+texture_filter = 1
+layout_mode = 0
+anchor_left = 0.0932455
+anchor_top = 0.759362
+anchor_right = 0.893803
+anchor_bottom = 0.890233
+theme_override_fonts/font = ExtResource("10_4c57u")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = ExtResource("17_seu75")
+theme_override_styles/disabled_mirrored = ExtResource("17_seu75")
+theme_override_styles/disabled = ExtResource("17_seu75")
+theme_override_styles/hover_pressed_mirrored = ExtResource("17_seu75")
+theme_override_styles/hover_pressed = ExtResource("17_seu75")
+theme_override_styles/hover_mirrored = ExtResource("17_seu75")
+theme_override_styles/hover = SubResource("StyleBoxFlat_htxhm")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jq2sk")
+text = "Submit"
+metadata/_edit_use_anchors_ = true
+
+[node name="HTTPRequest" type="HTTPRequest" parent="UI/endMessage/submitTIme"]
+
 [node name="Timer" type="Panel" parent="UI"]
 anchors_preset = -1
 anchor_left = 0.0347222
@@ -2663,3 +2732,4 @@ scale = Vector2(1.515, 1.515)
 [connection signal="value_changed" from="UI/Panel2/HSlider2" to="UI/Panel2/HSlider2" method="_on_value_changed"]
 [connection signal="pressed" from="UI/Panel2/Button4" to="UI/Panel2" method="_on_button_4_pressed"]
 [connection signal="pressed" from="UI/endMessage/Button" to="UI/endMessage" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/endMessage/submitTIme/Button4" to="UI/endMessage/submitTIme" method="_on_button_4_pressed"]
