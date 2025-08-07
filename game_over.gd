@@ -1,6 +1,6 @@
 extends Panel
 
-var checkpoint = 3
+var checkpoint = 0
 
 var possibleTrigger = true
 

@@ -2041,15 +2041,18 @@ metadata/_edit_use_anchors_ = true
 [node name="displayFinishedTime" type="Label" parent="UI/endMessage"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 320.0
-offset_top = 219.0
-offset_right = 849.0
-offset_bottom = 399.0
+anchor_left = 0.275863
+anchor_top = 0.335891
+anchor_right = 0.7319
+anchor_bottom = 0.611965
+offset_top = 1.52588e-05
+offset_bottom = 3.05176e-05
 theme_override_fonts/font = ExtResource("10_4c57u")
 theme_override_font_sizes/font_size = 180
 text = "00:00:00"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="UI/endMessage"]
 texture_filter = 1
@@ -2139,15 +2142,16 @@ metadata/_edit_use_anchors_ = true
 
 [node name="LineEdit" type="LineEdit" parent="UI/endMessage/submitTIme"]
 layout_mode = 0
-offset_left = 44.0
-offset_top = 169.0
-offset_right = 329.0
-offset_bottom = 271.0
+anchor_left = 0.114585
+anchor_top = 0.405832
+anchor_right = 0.856786
+anchor_bottom = 0.650772
 theme_override_fonts/font = ExtResource("10_4c57u")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_ok6jj")
 placeholder_text = "Please enter username!"
 alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Timer" type="Panel" parent="UI"]
 process_mode = 3
