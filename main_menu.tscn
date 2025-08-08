@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://c6j6lgfgm5lbf"]
+[gd_scene load_steps=14 format=4 uid="uid://c6j6lgfgm5lbf"]
 
 [ext_resource type="Texture2D" uid="uid://bx1oiqfsx33on" path="res://assets/background.png" id="1_7vrkn"]
 [ext_resource type="Script" uid="uid://bm4ff0jxaauqj" path="res://main_menu.gd" id="1_fu7sn"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://ddgtkg1df2sug" path="res://music-volume.gd" id="3_glbon"]
 [ext_resource type="StyleBox" uid="uid://bcrq3dvppntqs" path="res://main_menu.tres" id="3_qe12f"]
 [ext_resource type="Script" uid="uid://guhj4whm5lg5" path="res://sfx-volume.gd" id="4_nlkkf"]
+[ext_resource type="Script" uid="uid://chfk61epuf8wl" path="res://panel_4.gd" id="6_8qtwp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jix8l"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -585,6 +586,73 @@ vertical_alignment = 1
 autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 
+[node name="Panel4" type="Panel" parent="CanvasLayer/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.334485
+anchor_top = 0.180652
+anchor_right = 0.665515
+anchor_bottom = 0.819348
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_glbon")
+script = ExtResource("6_8qtwp")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/Panel4"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0880637
+anchor_top = 0.028866
+anchor_right = 0.906755
+anchor_bottom = 0.221603
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_jix8l")
+theme_override_font_sizes/font_size = 80
+text = "How to Play"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Button5" type="Button" parent="CanvasLayer/Panel/Panel4"]
+texture_filter = 1
+layout_mode = 0
+anchor_left = 0.0932455
+anchor_top = 0.759362
+anchor_right = 0.893803
+anchor_bottom = 0.890233
+theme_override_fonts/font = ExtResource("2_jix8l")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = ExtResource("3_qe12f")
+theme_override_styles/disabled_mirrored = ExtResource("3_qe12f")
+theme_override_styles/disabled = ExtResource("3_qe12f")
+theme_override_styles/hover_pressed_mirrored = ExtResource("3_qe12f")
+theme_override_styles/hover_pressed = ExtResource("3_qe12f")
+theme_override_styles/hover = SubResource("StyleBoxFlat_qe12f")
+theme_override_styles/normal = ExtResource("3_qe12f")
+text = "PLAY"
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="CanvasLayer/Panel/Panel4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0621794
+anchor_top = 0.221291
+anchor_right = 0.943054
+anchor_bottom = 0.682909
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_jix8l")
+theme_override_font_sizes/font_size = 20
+text = "To move around in this Game you can use WASD or the arrow keys. On the top of the screen you will see blue bar that shows you how much oxygen you have left. You have to collect oxygen to stay alive. On the bottom right of the screen you will see you hp bar. Try to not touch the saws or the fish. Also you can press escape to pause the game.
+ Good Luck!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 z_index = -5
 texture_filter = 1
@@ -606,3 +674,4 @@ texture = ExtResource("2_fu7sn")
 [connection signal="value_changed" from="CanvasLayer/Panel/Panel2/HSlider2" to="CanvasLayer/Panel/Panel2/HSlider2" method="_on_value_changed"]
 [connection signal="pressed" from="CanvasLayer/Panel/Panel2/Button4" to="." method="_on_button_4_pressed"]
 [connection signal="pressed" from="CanvasLayer/Panel/Panel3/Button5" to="." method="_on_button_5_pressed"]
+[connection signal="pressed" from="CanvasLayer/Panel/Panel4/Button5" to="CanvasLayer/Panel/Panel4" method="_on_button_5_pressed"]

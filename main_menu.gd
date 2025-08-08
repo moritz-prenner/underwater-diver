@@ -3,6 +3,7 @@ extends Node
 @onready var options: Panel = $CanvasLayer/Panel/Panel2
 @onready var panel: Panel = $CanvasLayer/Panel/Panel
 @onready var credits: Panel = $CanvasLayer/Panel/Panel3
+@onready var panel_4: Panel = $CanvasLayer/Panel/Panel4
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,7 +11,7 @@ func _ready() -> void:
 	credits.visible = false
 
 func _on_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://main.tscn")
+	panel_4.visible = true
 
 
 func _on_button_2_pressed() -> void:

@@ -19,6 +19,7 @@ func format_time(ms: int) -> String:
 	return "%02d:%02d.%02d" % [minutes, seconds, millis]
 
 func gameEnded():
+	get_tree().paused = true
 	timer.countTime = false
 	visible = true
 	finishedTime = timer.getElapsedTime()
@@ -27,5 +28,4 @@ func gameEnded():
 	
 
 func _on_button_pressed() -> void:
-	get_tree().paused = false
 	submitTime.visible = true

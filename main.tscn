@@ -1514,7 +1514,7 @@ point_count = 3
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 z_index = 1
-position = Vector2(-63, 4)
+position = Vector2(-51, -1)
 script = ExtResource("1_272bh")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
@@ -2073,6 +2073,7 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="submitTIme" type="Panel" parent="UI/endMessage"]
+process_mode = 3
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.334485
@@ -2141,6 +2142,7 @@ metadata/_edit_use_anchors_ = true
 [node name="HTTPRequest" type="HTTPRequest" parent="UI/endMessage/submitTIme"]
 
 [node name="LineEdit" type="LineEdit" parent="UI/endMessage/submitTIme"]
+process_mode = 3
 layout_mode = 0
 anchor_left = 0.114585
 anchor_top = 0.405832
